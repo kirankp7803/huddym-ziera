@@ -34,33 +34,18 @@ const Login = () => {
                 {/* Image Section */}
                 <div style={{ flex: 1, display: window.innerWidth < 768 ? 'none' : 'block', position: 'relative' }}>
                     <img
-                        src="https://images.unsplash.com/photo-1583391733958-e026b1346375?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80"
+                        src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80"
                         alt="Fashion"
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)', display: 'flex', alignItems: 'flex-end', padding: '2rem' }}>
-                        <h2 style={{ color: 'white', fontFamily: 'var(--font-serif)', fontSize: '2rem' }}>Welcome Back</h2>
+                        <h2 style={{ color: 'white', fontFamily: 'var(--font-serif)', fontSize: '2rem' }}>Welcome</h2>
                     </div>
                 </div>
 
                 {/* Form Section */}
                 <div style={{ flex: 1, padding: '3rem' }}>
-                    <button
-                        onClick={() => window.history.back()}
-                        style={{
-                            background: 'none',
-                            border: 'none',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            marginBottom: '2rem',
-                            color: '#6b7280',
-                            fontSize: '0.9rem'
-                        }}
-                    >
-                        ← Back
-                    </button>
+
 
                     <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '0.5rem', fontSize: '2rem' }}>Login</h2>
                     <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Enter your mobile number to access your account.</p>

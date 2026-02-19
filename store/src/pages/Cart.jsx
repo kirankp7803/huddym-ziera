@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const Cart = () => {
     const [cart, setCart] = useState([]);
@@ -40,6 +41,22 @@ const Cart = () => {
     return (
         <div style={{ padding: '4rem 5%', backgroundColor: '#f9fafb', minHeight: '100vh' }}>
             <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+                <button
+                    onClick={() => window.history.back()}
+                    style={{
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        marginBottom: '1rem',
+                        color: '#4b5563',
+                        fontSize: '1rem'
+                    }}
+                >
+                    <ArrowLeft size={20} /> Back
+                </button>
                 <h1 style={{ fontSize: '2.5rem', fontFamily: 'serif', marginBottom: '3rem' }}>Shopping Bag ({cart.length})</h1>
 
                 <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth < 768 ? '1fr' : '1.5fr 1fr', gap: '2rem', alignItems: 'start' }}>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { ArrowLeft } from 'lucide-react';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -112,7 +113,7 @@ const ProductDetails = () => {
                     fontSize: '1rem'
                 }}
             >
-                ← Back
+                <ArrowLeft size={20} /> Back
             </button>
             <div className="product-details-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem' }}>
                 <div style={{ flex: 1 }}>
@@ -203,7 +204,24 @@ const ProductDetails = () => {
 
                 {/* Reviews Section */}
                 <div style={{ marginTop: '4rem', padding: '2rem', background: '#fff7ed', borderRadius: '1rem', gridColumn: '1 / -1', width: '100%' }}>
-                    <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2rem' }}>Customer Reviews</h2>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                        <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: 0 }}>Customer Reviews</h2>
+                        <button
+                            onClick={() => navigate('/write-review', { state: { productName: product.name } })}
+                            style={{
+                                padding: '0.75rem 1.5rem',
+                                backgroundColor: 'var(--color-primary)',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '0.5rem',
+                                fontWeight: 'bold',
+                                cursor: 'pointer',
+                                fontSize: '1rem'
+                            }}
+                        >
+                            Write a Review
+                        </button>
+                    </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                         <div style={{ borderBottom: '1px solid #fed7aa', paddingBottom: '1rem' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>

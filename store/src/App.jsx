@@ -8,11 +8,15 @@ import Checkout from './pages/Checkout';
 import Wishlist from './pages/Wishlist';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import About from './pages/About';
+import WriteReview from './pages/WriteReview';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import './index.css';
 
 function App() {
   return (
     <Router>
+      <ScrollToTopButton />
       <div className="app-container">
         <Navbar />
         <main className="container main-content">
@@ -25,6 +29,8 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/write-review" element={<WriteReview />} />
           </Routes>
         </main>
         <footer className="footer" style={{ marginTop: 'auto', background: '#27272a', color: 'white', padding: '3rem 2rem' }}>

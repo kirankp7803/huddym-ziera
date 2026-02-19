@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
@@ -38,7 +39,7 @@ const Wishlist = () => {
                     fontSize: '1rem'
                 }}
             >
-                ← Back
+                <ArrowLeft size={20} /> Back
             </button>
             <div>
                 <h2 className="section-title">My Wishlist</h2>

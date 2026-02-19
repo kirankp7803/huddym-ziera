@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const Checkout = () => {
     const [cart, setCart] = useState([]);
@@ -82,6 +83,22 @@ const Checkout = () => {
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap-reverse' }}>
                         <div style={{ flex: 1.5, backgroundColor: 'white', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+                            <button
+                                onClick={() => window.history.back()}
+                                style={{
+                                    background: 'none',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    marginBottom: '1rem',
+                                    color: '#4b5563',
+                                    fontSize: '1rem'
+                                }}
+                            >
+                                <ArrowLeft size={20} /> Back
+                            </button>
                             <h1 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '2rem' }}>Shipping Information</h1>
                             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                                 <section>

@@ -148,6 +148,29 @@ app.post('/api/payment/verify', (req, res) => {
     }
 });
 
+// Newsletter Subscription
+app.post('/api/subscribe', (req, res) => {
+    const data = readData();
+    const { email } = req.body;
+
+    if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+    }
+
+    if (!data.subscriptions) {
+        data.subscriptions = [];
+    }
+
+    if (data.subscriptions.includes(email)) {
+        return res.status(409).json({ message: "Email is already subscribed" });
+    }
+
+    data.subscriptions.push(email);
+    writeData(data);
+
+    res.status(200).json({ message: "Successfully subscribed to newsletter!" });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
