@@ -8,7 +8,7 @@ services:
     volumes:
       - ./server/data.json:/app/data.json
     env_file:
-      - ./server/.env
+      - ./.env
     restart: unless-stopped
 
   # Store (Customer-facing) Frontend
