@@ -1,0 +1,802 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Kanjivaram Silk Saree",
+      "price": "12999",
+      "category": "Saree",
+      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Authentic handwoven Kanjivaram silk saree in deep crimson with gold zari border."
+    },
+    {
+      "id": 2,
+      "name": "Banarasi Silk Saree",
+      "price": "8999",
+      "category": "Saree",
+      "image": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Traditional Banarasi silk saree with intricate floral motifs."
+    },
+    {
+      "id": 3,
+      "name": "Georgette Floral Saree",
+      "price": "2499",
+      "category": "Saree",
+      "image": "https://images.unsplash.com/photo-1583391733958-e026b1346375?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80",
+      "description": "Lightweight georgette saree with vibrant floral prints."
+    },
+    {
+      "id": 4,
+      "name": "Chanderi Cotton Saree",
+      "price": "3500",
+      "category": "Saree",
+      "image": "https://images.unsplash.com/photo-1627964406567-27e1f486c429?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Elegant Chanderi cotton saree perfect for summer weddings."
+    },
+    {
+      "id": 5,
+      "name": "Mysore Silk Saree",
+      "price": "6799",
+      "category": "Saree",
+      "image": "https://images.unsplash.com/photo-1609357606029-28f58582d023?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Soft and lustrous Mysore silk saree in royal blue."
+    },
+    {
+      "id": 6,
+      "name": "Pink Embroidered Churidar",
+      "price": "1899",
+      "category": "Churidar",
+      "image": "https://images.unsplash.com/photo-1596783437088-08a3898700d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Cotton churidar set with delicate embroidery and dupatta."
+    },
+    {
+      "id": 7,
+      "name": "Anarkali Churidar Suit",
+      "price": "4599",
+      "category": "Churidar",
+      "image": "https://images.unsplash.com/photo-1583391733958-e026b1346375?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80",
+      "description": "Floor-length Anarkali style churidar suit for festive occasions."
+    },
+    {
+      "id": 8,
+      "name": "Cotton Printed Churidar",
+      "price": "999",
+      "category": "Churidar",
+      "image": "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&auto=format&fit=crop&w=734&q=80",
+      "description": "Daily wear cotton churidar with block prints."
+    },
+    {
+      "id": 9,
+      "name": "Silk Blend Churidar",
+      "price": "2999",
+      "category": "Churidar",
+      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Rich silk blend churidar in emerald green."
+    },
+    {
+      "id": 10,
+      "name": "Party Wear Churidar",
+      "price": "3499",
+      "category": "Churidar",
+      "image": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Heavy embroidered churidar suit with net heavy dupatta."
+    },
+    {
+      "id": 11,
+      "name": "Graphic Print T-Shirt",
+      "price": "499",
+      "category": "T-Shirt",
+      "image": "https://images.unsplash.com/photo-1503342394128-c104d54dba01?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Casual cotton t-shirt with cool graphic print."
+    },
+    {
+      "id": 12,
+      "name": "Plain White Tee",
+      "price": "399",
+      "category": "T-Shirt",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80",
+      "description": "Classic essential plain white cotton t-shirt."
+    },
+    {
+      "id": 13,
+      "name": "Striped Polo T-Shirt",
+      "price": "799",
+      "category": "T-Shirt",
+      "image": "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Smart casual striped polo neck t-shirt."
+    },
+    {
+      "id": 14,
+      "name": "V-Neck Crop Top",
+      "price": "599",
+      "category": "T-Shirt",
+      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Trendy V-neck crop top for summer."
+    },
+    {
+      "id": 15,
+      "name": "Long Sleeve Tee",
+      "price": "699",
+      "category": "T-Shirt",
+      "image": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Comfortable long sleeve t-shirt for layering."
+    },
+    {
+      "id": 16,
+      "name": "Denim Jeans",
+      "price": "1499",
+      "category": "Pants",
+      "image": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Classic blue denim jeans with a slim fit."
+    },
+    {
+      "id": 17,
+      "name": "Black Trousers",
+      "price": "1299",
+      "category": "Pants",
+      "image": "https://images.unsplash.com/photo-1506629082955-511b1aa00272?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Formal black trousers suitable for office wear."
+    },
+    {
+      "id": 18,
+      "name": "Cotton Palazzos",
+      "price": "899",
+      "category": "Pants",
+      "image": "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Wide-leg cotton palazzos for ultimate comfort."
+    },
+    {
+      "id": 19,
+      "name": "Cargo Pants",
+      "price": "1599",
+      "category": "Pants",
+      "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Trendy khaki cargo pants with multiple pockets."
+    },
+    {
+      "id": 20,
+      "name": "Leggings Set",
+      "price": "699",
+      "category": "Pants",
+      "image": "https://images.unsplash.com/photo-1505022610485-0249ba5b3675?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Pack of 2 comfortable cotton leggings."
+    },
+    {
+      "id": 21,
+      "name": "Jaipuri Cotton Kurti",
+      "price": "1299",
+      "category": "Kurti",
+      "image": "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&auto=format&fit=crop&w=734&q=80",
+      "description": "Comfortable and vibrant Jaipuri print cotton kurti."
+    },
+    {
+      "id": 22,
+      "name": "Chikankari Kurta",
+      "price": "2199",
+      "category": "Kurti",
+      "image": "https://images.unsplash.com/photo-1596783437088-08a3898700d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Pastel Lucknowi Chikankari kurta in pure georgette."
+    },
+    {
+      "id": 23,
+      "name": "Rayon Printed Kurti",
+      "price": "899",
+      "category": "Kurti",
+      "image": "https://images.unsplash.com/photo-1583391733958-e026b1346375?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80",
+      "description": "Soft rayon kurti with digital prints."
+    },
+    {
+      "id": 24,
+      "name": "Banarasi Lehenga Choli",
+      "price": "18500",
+      "category": "Lehenga",
+      "image": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Stunning Banarasi silk lehenga with heavy border work."
+    },
+    {
+      "id": 25,
+      "name": "Bridal Lehenga",
+      "price": "25000",
+      "category": "Lehenga",
+      "image": "https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+      "description": "Exquisite red bridal lehenga with zardosi work."
+    },
+    {
+      "id": 26,
+      "name": "Gold Plated Jhumkas",
+      "price": "899",
+      "category": "Jewelry",
+      "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Traditional gold-plated jhumkas with pearl drops."
+    },
+    {
+      "id": 27,
+      "name": "Kundan Choker Necklace",
+      "price": "2499",
+      "category": "Jewelry",
+      "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Elegant Kundan choker set with matching earrings."
+    },
+    {
+      "id": 28,
+      "name": "Mojari Footwear",
+      "price": "1599",
+      "category": "Footwear",
+      "image": "https://images.unsplash.com/photo-1560769623-4674eb2d3960?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Handcrafted leather Mojaris with colorful embroidery."
+    },
+    {
+      "id": 29,
+      "name": "Bandhani Dupatta",
+      "price": "799",
+      "category": "Accessories",
+      "image": "https://images.unsplash.com/photo-1609357606029-28f58582d023?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Vibrant Bandhani print dupatta."
+    },
+    {
+      "id": 30,
+      "name": "Temple Jewellery Bangle",
+      "price": "1299",
+      "category": "Jewelry",
+      "image": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Antique finish temple jewellery bangle."
+    },
+    {
+      "id": 31,
+      "name": "Printed Georgette Saree",
+      "price": "1999",
+      "category": "Saree",
+      "image": "https://images.unsplash.com/photo-1574634534894-89d7576c8259?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80",
+      "description": "Daily wear printed georgette saree."
+    },
+    {
+      "id": 32,
+      "name": "Linen Saree",
+      "price": "2200",
+      "category": "Saree",
+      "image": "https://images.unsplash.com/photo-1574634534894-89d7576c8259?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80",
+      "description": "Pure linen saree with silver borders."
+    },
+    {
+      "id": 33,
+      "name": "Patiala Suit",
+      "price": "2100",
+      "category": "Churidar",
+      "image": "https://images.unsplash.com/photo-1583391733958-e026b1346375?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80",
+      "description": "Traditional Patiala suit with phulkari dupatta."
+    },
+    {
+      "id": 34,
+      "name": "Straight Cut Churidar",
+      "price": "1500",
+      "category": "Churidar",
+      "image": "https://images.unsplash.com/photo-1596783437088-08a3898700d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Simple straight cut churidar for office wear."
+    },
+    {
+      "id": 35,
+      "name": "Oversized T-Shirt",
+      "price": "550",
+      "category": "T-Shirt",
+      "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=400&auto=format&fit=crop",
+      "description": "Trendy oversized t-shirt with bold prints."
+    },
+    {
+      "id": 36,
+      "name": "Tie-Dye T-Shirt",
+      "price": "650",
+      "category": "T-Shirt",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80",
+      "description": "Colorful tie-dye t-shirt."
+    },
+    {
+      "id": 37,
+      "name": "High Waist Jeans",
+      "price": "1600",
+      "category": "Pants",
+      "image": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Stylish high waist jeans."
+    },
+    {
+      "id": 38,
+      "name": "Joggers",
+      "price": "999",
+      "category": "Pants",
+      "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Comfortable joggers for gym and home."
+    },
+    {
+      "id": 39,
+      "name": "A-Line Kurti",
+      "price": "1100",
+      "category": "Kurti",
+      "image": "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&auto=format&fit=crop&w=734&q=80",
+      "description": "Stylish A-line kurti with side pockets."
+    },
+    {
+      "id": 40,
+      "name": "Short Kurti",
+      "price": "700",
+      "category": "Kurti",
+      "image": "https://images.unsplash.com/photo-1583391733958-e026b1346375?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80",
+      "description": "Short kurti to pair with jeans."
+    },
+    {
+      "id": 41,
+      "name": "Net Lehenga",
+      "price": "15000",
+      "category": "Lehenga",
+      "image": "https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+      "description": "Beautiful net lehenga with stone work."
+    },
+    {
+      "id": 42,
+      "name": "Crop Top Lehenga",
+      "price": "12000",
+      "category": "Lehenga",
+      "image": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Modern crop top lehenga with jacket."
+    },
+    {
+      "id": 43,
+      "name": "Pearl Necklace",
+      "price": "1500",
+      "category": "Jewelry",
+      "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      "description": "Classic single strand pearl necklace."
+    },
+    {
+      "id": 44,
+      "name": "Silver Oxidised Earrings",
+      "price": "450",
+      "category": "Jewelry",
+      "image": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Boho style silver oxidised earrings."
+    },
+    {
+      "id": 45,
+      "name": "Kolhapuri Chappal",
+      "price": "1200",
+      "category": "Footwear",
+      "image": "https://images.unsplash.com/photo-1560769623-4674eb2d3960?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Traditional Kolhapuri chappals."
+    },
+    {
+      "id": 46,
+      "name": "Block Heels",
+      "price": "17",
+      "category": "Footwear",
+      "image": "https://images.unsplash.com/photo-1560769623-4674eb2d3960?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Comfortable block heels for parties.",
+      "count": "1"
+    },
+    {
+      "id": 47,
+      "name": "Hair Accessories Set",
+      "price": "300",
+      "category": "Accessories",
+      "image": "https://images.unsplash.com/photo-1609357606029-28f58582d023?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Set of clips, bands and scrunchies."
+    },
+    {
+      "id": 48,
+      "name": "Potli Bag",
+      "price": "500",
+      "category": "Accessories",
+      "image": "https://images.unsplash.com/photo-1609357606029-28f58582d023?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Embroidered potli bag for ethnic wear."
+    },
+    {
+      "id": 49,
+      "name": "Silk Scarf",
+      "price": "600",
+      "category": "Accessories",
+      "image": "https://images.unsplash.com/photo-1609357606029-28f58582d023?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Printed silk scarf."
+    },
+    {
+      "id": 50,
+      "name": "Cotton Dupatta",
+      "price": "350",
+      "category": "Accessories",
+      "image": "https://images.unsplash.com/photo-1609357606029-28f58582d023?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "description": "Simple cotton dupatta for daily use."
+    },
+    {
+      "id": 1771235802864,
+      "name": "saree",
+      "price": "12",
+      "discountPrice": "10",
+      "count": "1",
+      "category": "Saree",
+      "description": "nothing",
+      "image": "file:///C:/Users/milan/Downloads/young-indian-woman-wearing-sari.jpg"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1771220744011,
+      "date": "2026-02-16T05:45:44.011Z",
+      "customer": {
+        "name": "kiran kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "pincode": "680312",
+        "paymentMethod": "upi"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        },
+        {
+          "id": 1,
+          "name": "Kanjivaram Silk Saree",
+          "price": "12999",
+          "category": "Saree",
+          "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Authentic handwoven Kanjivaram silk saree in deep crimson with gold zari border."
+        }
+      ],
+      "total": 13898
+    },
+    {
+      "id": 1771220892754,
+      "date": "2026-02-16T05:48:12.754Z",
+      "customer": {
+        "name": "kiran kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "pincode": "680312",
+        "paymentMethod": "upi"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        }
+      ],
+      "total": 899
+    },
+    {
+      "id": 1771221064676,
+      "date": "2026-02-16T05:51:04.676Z",
+      "customer": {
+        "name": "kiran kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "pincode": "680312",
+        "paymentMethod": "upi"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        }
+      ],
+      "total": 899
+    },
+    {
+      "id": 1771221235644,
+      "date": "2026-02-16T05:53:55.644Z",
+      "customer": {
+        "name": "kiran kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "pincode": "680312",
+        "paymentMethod": "upi"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        }
+      ],
+      "total": 899
+    },
+    {
+      "id": 1771232823975,
+      "date": "2026-02-16T09:07:03.975Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "9496325601",
+        "paymentMethod": "razorpay",
+        "billingAddress": "same",
+        "saveInfo": true
+      },
+      "items": [
+        {
+          "id": 1,
+          "name": "Kanjivaram Silk Saree",
+          "price": "12999",
+          "category": "Saree",
+          "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Authentic handwoven Kanjivaram silk saree in deep crimson with gold zari border."
+        }
+      ],
+      "total": 12999
+    },
+    {
+      "id": 1771233400547,
+      "date": "2026-02-16T09:16:40.547Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "9496325601",
+        "paymentMethod": "razorpay",
+        "billingAddress": "same"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        }
+      ],
+      "total": 899
+    },
+    {
+      "id": 1771234063377,
+      "date": "2026-02-16T09:27:43.377Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "9496325601",
+        "paymentMethod": "razorpay",
+        "billingAddress": "same"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        }
+      ],
+      "total": 899
+    },
+    {
+      "id": 1771234227648,
+      "date": "2026-02-16T09:30:27.648Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "9496325601",
+        "paymentMethod": "razorpay",
+        "billingAddress": "same"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        }
+      ],
+      "total": 899
+    },
+    {
+      "id": 1771234295571,
+      "date": "2026-02-16T09:31:35.571Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "9496325601",
+        "paymentMethod": "razorpay",
+        "billingAddress": "same"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        }
+      ],
+      "total": 899
+    },
+    {
+      "id": 1771234367397,
+      "date": "2026-02-16T09:32:47.397Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "9496325601",
+        "paymentMethod": "bank",
+        "billingAddress": "same"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        },
+        {
+          "id": 1,
+          "name": "Kanjivaram Silk Saree",
+          "price": "12999",
+          "category": "Saree",
+          "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Authentic handwoven Kanjivaram silk saree in deep crimson with gold zari border."
+        }
+      ],
+      "total": 13898
+    },
+    {
+      "id": 1771234838893,
+      "date": "2026-02-16T09:40:38.893Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "9496325601",
+        "paymentMethod": "upi",
+        "billingAddress": "same"
+      },
+      "items": [
+        {
+          "id": 26,
+          "name": "Gold Plated Jhumkas",
+          "price": "899",
+          "category": "Jewelry",
+          "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Traditional gold-plated jhumkas with pearl drops."
+        }
+      ],
+      "total": 899
+    },
+    {
+      "id": 1771237171888,
+      "date": "2026-02-16T10:19:31.888Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "9496325601",
+        "paymentMethod": "razorpay",
+        "billingAddress": "same"
+      },
+      "items": [
+        {
+          "id": 1,
+          "name": "Kanjivaram Silk Saree",
+          "price": "12999",
+          "category": "Saree",
+          "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Authentic handwoven Kanjivaram silk saree in deep crimson with gold zari border."
+        },
+        {
+          "id": 1,
+          "name": "Kanjivaram Silk Saree",
+          "price": "12999",
+          "category": "Saree",
+          "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Authentic handwoven Kanjivaram silk saree in deep crimson with gold zari border."
+        },
+        {
+          "id": 1,
+          "name": "Kanjivaram Silk Saree",
+          "price": "12999",
+          "category": "Saree",
+          "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+          "description": "Authentic handwoven Kanjivaram silk saree in deep crimson with gold zari border."
+        }
+      ],
+      "total": 38997
+    },
+    {
+      "id": 1771247692397,
+      "date": "2026-02-16T13:14:52.314Z",
+      "customer": {
+        "email": "kirankp7803@gmail.com",
+        "newsletter": true,
+        "country": "India",
+        "firstName": "kiran",
+        "lastName": "kp",
+        "address": "koonan house,nandipulam p o ,thrissur",
+        "city": "thrissur",
+        "state": "Kerala",
+        "pincode": "680312",
+        "phone": "kirankp7803@gmail.com",
+        "paymentMethod": "razorpay_link",
+        "billingAddress": "same"
+      },
+      "items": [
+        {
+          "id": 1771235802864,
+          "name": "saree",
+          "price": "12",
+          "discountPrice": "10",
+          "count": "1",
+          "category": "Saree",
+          "description": "nothing",
+          "image": "file:///C:/Users/milan/Downloads/young-indian-woman-wearing-sari.jpg"
+        }
+      ],
+      "total": 12,
+      "status": "Pending"
+    }
+  ]
+}
