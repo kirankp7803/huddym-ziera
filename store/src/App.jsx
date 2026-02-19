@@ -21,12 +21,13 @@ function App() {
         <Navbar />
         <main className="container main-content">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/about" element={<About />} />
@@ -42,7 +43,7 @@ function App() {
             <div>
               <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', fontWeight: 'bold' }}>Quick Links</h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <a href="/" style={{ color: '#a1a1aa', textDecoration: 'none' }}>Home</a>
+                <a href="/home" style={{ color: '#a1a1aa', textDecoration: 'none' }}>Home</a>
                 <a href="/shop" style={{ color: '#a1a1aa', textDecoration: 'none' }}>Shop</a>
                 <a href="/about" style={{ color: '#a1a1aa', textDecoration: 'none' }}>About Us</a>
                 <a href="/contact" style={{ color: '#a1a1aa', textDecoration: 'none' }}>Contact</a>

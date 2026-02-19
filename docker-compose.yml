@@ -1,0 +1,32 @@
+services:
+  # Backend API Server
+  server:
+    build: ./server
+    container_name: chicboutique-server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server/data.json:/app/data.json
+    env_file:
+      - ./server/.env
+    restart: unless-stopped
+
+  # Store (Customer-facing) Frontend
+  store:
+    build: ./store
+    container_name: chicboutique-store
+    ports:
+      - "5174:5174"
+    depends_on:
+      - server
+    restart: unless-stopped
+
+  # Admin Portal Frontend
+  admin:
+    build: ./admin
+    container_name: chicboutique-admin
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    restart: unless-stopped

@@ -22,7 +22,7 @@ const Login = () => {
         e.preventDefault();
         if (otp === '1234') {
             alert('Login Successful!');
-            navigate('/'); // Redirect to home
+            navigate('/home'); // Redirect to home
         } else {
             alert('Invalid OTP. Please try again.');
         }
