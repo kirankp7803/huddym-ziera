@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../apiConfig';
 
 const Inventory = () => {
     const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ const Inventory = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/products');
+            const response = await axios.get(`${API_BASE_URL}/products`);
             setProducts(response.data);
             setLoading(false);
         } catch (error) {
@@ -25,7 +26,7 @@ const Inventory = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this product?")) {
             try {
-                await axios.delete(`http://localhost:5000/api/products/${id}`);
+                await axios.delete(`${API_BASE_URL}/products/${id}`);
                 setProducts(products.filter(p => p.id !== id));
             } catch (error) {
                 alert("Failed to delete product");

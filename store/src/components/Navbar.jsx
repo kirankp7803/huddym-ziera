@@ -57,9 +57,9 @@ const Navbar = () => {
                         <ShoppingBag size={20} />
                         <span className="cart-badge">{cartCount}</span>
                     </Link>
-                    <Link to="/login" className="icon-btn">
+                    <button onClick={() => { localStorage.removeItem('user'); window.location.href = '/'; }} className="icon-btn" title="Logout">
                         <User size={20} />
-                    </Link>
+                    </button>
                 </div>
             </div>
         </nav>

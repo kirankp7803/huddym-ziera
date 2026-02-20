@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft } from 'lucide-react';
+import API_BASE_URL from '../apiConfig';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -13,7 +14,7 @@ const ProductDetails = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/products');
+                const response = await axios.get(`${API_BASE_URL}/products`);
                 const found = response.data.find(p => p.id === parseInt(id) || p.id === id);
                 setProduct(found);
 
@@ -101,42 +102,32 @@ const ProductDetails = () => {
         <div style={{ marginTop: '2rem' }}>
             <button
                 onClick={() => window.history.back()}
-                style={{
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    marginBottom: '1rem',
-                    color: '#4b5563',
-                    fontSize: '1rem'
-                }}
+                className="back-btn"
             >
                 <ArrowLeft size={20} /> Back
             </button>
-            <div className="product-details-container" style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem' }}>
+            <div className="product-details-layout">
                 <div style={{ flex: 1 }}>
-                    <img src={product.image} alt={product.name} style={{ width: '100%', borderRadius: '1rem', objectFit: 'cover' }} />
+                    <img src={product.image} alt={product.name} className="product-main-img" />
                 </div>
-                <div style={{ flex: 1 }}>
-                    <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', marginBottom: '1rem' }}>{product.name}</h1>
-                    <p style={{ fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 'bold', marginBottom: '1.5rem' }}>₹{product.price}</p>
-                    <p style={{ marginBottom: '2rem', color: '#4b5563' }}>{product.description}</p>
+                <div className="product-detail-info">
+                    <h1 className="product-title">{product.name}</h1>
+                    <p className="product-price-large">₹{product.price}</p>
+                    <p className="product-description">{product.description}</p>
 
                     {complimentaryProducts.length > 0 && (
-                        <div style={{ marginTop: '3rem' }}>
+                        <div className="complimentary-section">
                             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', marginBottom: '1.5rem' }}>Complimentary Products</h2>
-                            <div style={{ display: 'flex', gap: '1.5rem', overflowX: 'auto', paddingBottom: '1rem' }}>
+                            <div className="complimentary-grid">
                                 {complimentaryProducts.map(item => (
-                                    <div key={item.id} style={{ flexShrink: 0, width: '180px', border: '1px solid #eee', borderRadius: '0.75rem', padding: '1rem', textAlign: 'center' }}>
+                                    <div key={item.id} className="complimentary-card">
                                         <img src={item.image} alt={item.name} style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '0.5rem', marginBottom: '0.75rem' }} />
                                         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</h3>
                                         <p className="product-price" style={{ fontSize: '1rem' }}>₹{item.price}</p>
                                         <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
-                                            <a href={`/product/${item.id}`} className="btn-primary" style={{ flex: 1, fontSize: '0.9rem', padding: '0.5rem', textAlign: 'center', textDecoration: 'none' }}>
+                                            <Link to={`/product/${item.id}`} className="btn-primary" style={{ flex: 1, fontSize: '0.9rem', padding: '0.5rem', textAlign: 'center', textDecoration: 'none' }}>
                                                 View
-                                            </a>
+                                            </Link>
                                             <button
                                                 onClick={() => addToCart(item)}
                                                 className="btn-primary"
@@ -151,51 +142,42 @@ const ProductDetails = () => {
                         </div>
                     )}
 
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem' }}>
+                    <div className="product-actions-group">
                         <button onClick={() => addToCart(product)} className="btn-primary" style={{ flex: 1, minWidth: '150px' }}>Add to Bag</button>
                         <button
                             onClick={buyNow}
+                            className="btn-primary"
                             style={{
                                 flex: 1,
                                 minWidth: '150px',
-                                padding: '0.75rem 1.5rem',
-                                borderRadius: '9999px',
-                                backgroundColor: '#1d4ed8',
-                                color: 'white',
-                                border: 'none',
-                                cursor: 'pointer',
-                                fontWeight: '600'
+                                backgroundColor: '#1d4ed8'
                             }}
                         >Buy Now</button>
                         <button
                             onClick={toggleWishlist}
+                            className="btn-primary"
                             style={{
-                                border: '1px solid #ccc',
+                                flex: 1,
+                                minWidth: '150px',
                                 background: isWishlisted ? '#fee2e2' : 'white',
                                 color: isWishlisted ? '#b91c1c' : '#374151',
-                                padding: '0.75rem 1.5rem',
-                                borderRadius: '9999px',
-                                cursor: 'pointer',
-                                fontWeight: '600',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem'
+                                border: '1px solid #ccc'
                             }}
                         >
                             {isWishlisted ? 'Wishlisted' : 'Wishlist'}
                         </button>
                     </div>
 
-                    <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', borderTop: '1px solid #e5e7eb', paddingTop: '2rem' }}>
-                        <div style={{ textAlign: 'center' }}>
+                    <div className="trust-badges-grid">
+                        <div className="trust-badge-item">
                             <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🔒</div>
                             <span style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Secure Payment</span>
                         </div>
-                        <div style={{ textAlign: 'center' }}>
+                        <div className="trust-badge-item">
                             <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🚚</div>
                             <span style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Free Shipping</span>
                         </div>
-                        <div style={{ textAlign: 'center' }}>
+                        <div className="trust-badge-item">
                             <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>↩️</div>
                             <span style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Easy Returns</span>
                         </div>
@@ -203,21 +185,12 @@ const ProductDetails = () => {
                 </div>
 
                 {/* Reviews Section */}
-                <div style={{ marginTop: '4rem', padding: '2rem', background: '#fff7ed', borderRadius: '1rem', gridColumn: '1 / -1', width: '100%' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                <div className="reviews-container">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
                         <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: 0 }}>Customer Reviews</h2>
                         <button
                             onClick={() => navigate('/write-review', { state: { productName: product.name } })}
-                            style={{
-                                padding: '0.75rem 1.5rem',
-                                backgroundColor: 'var(--color-primary)',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '0.5rem',
-                                fontWeight: 'bold',
-                                cursor: 'pointer',
-                                fontSize: '1rem'
-                            }}
+                            className="btn-primary"
                         >
                             Write a Review
                         </button>

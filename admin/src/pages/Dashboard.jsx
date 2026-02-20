@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../apiConfig';
 
 const Dashboard = () => {
     const [stats, setStats] = useState({
@@ -11,8 +12,8 @@ const Dashboard = () => {
         const fetchStats = async () => {
             try {
                 const [productsRes, ordersRes] = await Promise.all([
-                    axios.get('http://localhost:5000/api/products'),
-                    axios.get('http://localhost:5000/api/orders')
+                    axios.get(`${API_BASE_URL}/products`),
+                    axios.get(`${API_BASE_URL}/orders`)
                 ]);
                 setStats({
                     products: productsRes.data.length,

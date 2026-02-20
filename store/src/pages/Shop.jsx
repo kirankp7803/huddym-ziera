@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft } from 'lucide-react';
+import API_BASE_URL from '../apiConfig';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -11,7 +12,7 @@ const Shop = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/products');
+                const response = await axios.get(`${API_BASE_URL}/products`);
                 setProducts(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -78,51 +79,20 @@ const Shop = () => {
         <div className="shop-container">
             <button
                 onClick={() => window.history.back()}
-                style={{
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    marginBottom: '1rem',
-                    color: '#4b5563',
-                    fontSize: '1rem'
-                }}
+                className="back-btn"
             >
                 <ArrowLeft size={20} /> Back
             </button>
-            <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
+            <div className="shop-layout">
                 {/* Category Sidebar */}
-                <aside className="shop-sidebar" style={{
-                    position: 'sticky',
-                    top: '6rem',
-                    height: 'fit-content',
-                    maxHeight: 'calc(100vh - 8rem)',
-                    overflowY: 'auto',
-                    minWidth: '200px',
-                    zIndex: 1
-                }}>
-                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', marginBottom: '1rem', borderBottom: '2px solid var(--color-accent)', paddingBottom: '0.5rem' }}>Categories</h3>
-                    <ul className="category-list" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <aside className="shop-sidebar">
+                    <h3 className="sidebar-title">Categories</h3>
+                    <ul className="category-list">
                         {categories.map(category => (
                             <li key={category}>
                                 <button
                                     onClick={() => setSelectedCategory(category)}
-                                    style={{
-                                        background: 'none',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        fontSize: '1.1rem',
-                                        color: selectedCategory === category ? 'var(--color-primary)' : 'var(--color-text-main)',
-                                        fontWeight: selectedCategory === category ? 'bold' : 'normal',
-                                        textAlign: 'left',
-                                        width: '100%',
-                                        padding: '0.5rem',
-                                        borderRadius: '0.5rem',
-                                        backgroundColor: selectedCategory === category ? '#fff7ed' : 'transparent',
-                                        transition: 'all 0.2s'
-                                    }}
+                                    className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
                                 >
                                     {category}
                                 </button>
@@ -132,15 +102,15 @@ const Shop = () => {
                 </aside>
 
                 {/* Product List */}
-                <div style={{ flex: 1 }}>
-                    <div style={{ backgroundImage: 'linear-gradient(to right, #fefce8, #fff7ed)', padding: '2rem', borderRadius: '1rem', marginBottom: '2rem', border: '1px solid #fed7aa', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <div>
-                            <h2 style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-primary)', fontSize: '2rem', marginBottom: '0.5rem' }}>Festive Sale is Live!</h2>
-                            <p style={{ color: '#78350f', fontSize: '1.1rem' }}>Get flat <span style={{ fontWeight: 'bold' }}>20% OFF</span> on all Silk Sarees. Use code: <span style={{ backgroundColor: '#fcd34d', padding: '0.25rem 0.5rem', borderRadius: '0.25rem', fontWeight: 'bold' }}>FESTIVE20</span></p>
+                <div className="product-list-container">
+                    <div className="sale-banner">
+                        <div className="sale-content">
+                            <h2 className="sale-title">Festive Sale is Live!</h2>
+                            <p className="sale-text">Get flat <span className="highlight-bold">20% OFF</span> on all Silk Sarees. Use code: <span className="promo-code">FESTIVE20</span></p>
                         </div>
-                        <div style={{ fontSize: '3rem' }}>🎉</div>
+                        <div className="sale-emoji">🎉</div>
                     </div>
-                    <h2 className="section-title" style={{ textAlign: 'left' }}>{selectedCategory === 'All' ? 'All Products' : selectedCategory}</h2>
+                    <h2 className="section-title shop-section-title">{selectedCategory === 'All' ? 'All Products' : selectedCategory}</h2>
                     <div className="product-list" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                         {filteredProducts.map((product) => (
                             <div key={product.id} className="product-card-horizontal">

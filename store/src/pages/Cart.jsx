@@ -39,43 +39,33 @@ const Cart = () => {
     }
 
     return (
-        <div style={{ padding: '4rem 5%', backgroundColor: '#f9fafb', minHeight: '100vh' }}>
-            <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <div className="cart-page-container">
+            <div className="cart-content-wrapper">
                 <button
                     onClick={() => window.history.back()}
-                    style={{
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem',
-                        marginBottom: '1rem',
-                        color: '#4b5563',
-                        fontSize: '1rem'
-                    }}
+                    className="back-btn"
                 >
                     <ArrowLeft size={20} /> Back
                 </button>
-                <h1 style={{ fontSize: '2.5rem', fontFamily: 'serif', marginBottom: '3rem' }}>Shopping Bag ({cart.length})</h1>
+                <h1 className="cart-title">Shopping Bag ({cart.length})</h1>
 
-                <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth < 768 ? '1fr' : '1.5fr 1fr', gap: '2rem', alignItems: 'start' }}>
+                <div className="cart-layout">
                     {/* Items List */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    <div className="cart-items-list">
                         {cart.map((item, index) => (
-                            <div key={index} style={{ backgroundColor: 'white', padding: '1rem', borderRadius: '1rem', display: 'flex', gap: '1rem', boxShadow: '0 4px 6px rgba(0,0,0,0.02)', flexDirection: window.innerWidth < 480 ? 'column' : 'row' }}>
-                                <img src={item.image} alt={item.name} style={{ width: window.innerWidth < 480 ? '100%' : '100px', height: window.innerWidth < 480 ? '200px' : '100px', objectFit: 'cover', borderRadius: '0.75rem' }} />
-                                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <div key={index} className="cart-item">
+                                <img src={item.image} alt={item.name} className="cart-item-img" />
+                                <div className="cart-item-details">
                                     <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                            <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>{item.name}</h3>
-                                            <p style={{ fontWeight: 'bold' }}>₹{parseFloat(item.price).toLocaleString('en-IN')}</p>
+                                        <div className="cart-item-header">
+                                            <h3 className="cart-item-name">{item.name}</h3>
+                                            <p className="cart-item-price">₹{parseFloat(item.price).toLocaleString('en-IN')}</p>
                                         </div>
-                                        <p style={{ color: '#6b7280', fontSize: '0.9rem', marginTop: '0.5rem' }}>{item.category}</p>
+                                        <p className="cart-item-category">{item.category}</p>
                                     </div>
                                     <button
                                         onClick={() => removeFromCart(index)}
-                                        style={{ alignSelf: 'flex-start', background: 'none', border: 'none', color: '#ef4444', fontSize: '0.85rem', cursor: 'pointer', padding: 0 }}
+                                        className="btn-remove"
                                     >
                                         Remove Item
                                     </button>
@@ -85,18 +75,18 @@ const Cart = () => {
                     </div>
 
                     {/* Summary Card */}
-                    <div style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', position: 'sticky', top: '2rem' }}>
-                        <h2 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '1.5rem' }}>Bag Summary</h2>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#6b7280' }}>
+                    <div className="cart-summary-card">
+                        <h2 className="summary-title">Bag Summary</h2>
+                        <div className="summary-rows">
+                            <div className="summary-row">
                                 <span>Subtotal</span>
                                 <span>₹{totalAmount.toLocaleString('en-IN')}</span>
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#6b7280' }}>
+                            <div className="summary-row">
                                 <span>Shipping</span>
-                                <span style={{ color: '#10b981' }}>FREE</span>
+                                <span style={{ color: '#10b981', fontWeight: 'bold' }}>FREE</span>
                             </div>
-                            <div style={{ borderTop: '1px solid #f3f4f6', marginTop: '1rem', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', fontSize: '1.25rem', fontWeight: '800' }}>
+                            <div className="summary-total">
                                 <span>Total</span>
                                 <span>₹{totalAmount.toLocaleString('en-IN')}</span>
                             </div>
@@ -104,25 +94,8 @@ const Cart = () => {
 
                         <button
                             onClick={() => navigate('/checkout')}
-                            style={{
-                                width: '100%',
-                                marginTop: '2rem',
-                                padding: '1.25rem',
-                                backgroundColor: '#111827',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '1rem',
-                                fontWeight: '700',
-                                fontSize: '1rem',
-                                cursor: 'pointer',
-                                transition: 'transform 0.2s',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '0.75rem'
-                            }}
-                            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                            className="btn-primary btn-checkout"
+                            style={{ backgroundColor: '#111827' }}
                         >
                             Proceed to Checkout
                             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>

@@ -148,6 +148,73 @@ app.post('/api/payment/verify', (req, res) => {
     }
 });
 
+// User Authentication - Signup
+app.post('/api/signup', (req, res) => {
+    const data = readData();
+    const { name, email, password, mobile } = req.body;
+
+    if (!data.users) data.users = [];
+
+    if (data.users.find(u => u.email === email)) {
+        return res.status(409).json({ message: "Email already registered" });
+    }
+
+    const newUser = {
+        id: Date.now(),
+        name,
+        email,
+        password, // In a real app, hash this!
+        mobile: mobile || ''
+    };
+
+    data.users.push(newUser);
+    writeData(data);
+
+    res.status(201).json({
+        message: "User registered successfully",
+        user: { name: newUser.name, email: newUser.email, mobile: newUser.mobile, loggedIn: true }
+    });
+});
+
+// User Authentication - Login (Password-based)
+app.post('/api/login', (req, res) => {
+    const data = readData();
+    const { email, password } = req.body;
+
+    const user = data.users?.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        res.json({
+            message: "Login successful",
+            user: { name: user.name, email: user.email, mobile: user.mobile, loggedIn: true }
+        });
+    } else {
+        res.status(401).json({ message: "Invalid email or password" });
+    }
+});
+
+// User Authentication - Login (OTP-based mock)
+app.post('/api/login-otp', (req, res) => {
+    const { mobile, otp } = req.body;
+    const data = readData();
+
+    // Mock OTP verification
+    if (otp === '1234') {
+        let user = data.users?.find(u => u.mobile === mobile);
+        if (!user) {
+            // Create a guest user or ask to signup
+            // For now, let's just allow it
+            user = { name: 'Guest User', mobile, email: '', loggedIn: true };
+        }
+        res.json({
+            message: "Login successful",
+            user: { ...user, loggedIn: true }
+        });
+    } else {
+        res.status(401).json({ message: "Invalid OTP" });
+    }
+});
+
 // Newsletter Subscription
 app.post('/api/subscribe', (req, res) => {
     const data = readData();

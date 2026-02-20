@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../apiConfig';
+import axios from 'axios';
 
 const Login = () => {
     const [mobileNumber, setMobileNumber] = useState('');
     const [otp, setOtp] = useState('');
     const [showOtpInput, setShowOtpInput] = useState(false);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSendOtp = (e) => {
@@ -18,13 +21,22 @@ const Login = () => {
         setShowOtpInput(true);
     };
 
-    const handleVerifyOtp = (e) => {
+    const handleVerifyOtp = async (e) => {
         e.preventDefault();
-        if (otp === '1234') {
+        setLoading(true);
+        try {
+            const response = await axios.post(`${API_BASE_URL}/login-otp`, {
+                mobile: mobileNumber,
+                otp: otp
+            });
+            localStorage.setItem('user', JSON.stringify(response.data.user));
             alert('Login Successful!');
-            navigate('/home'); // Redirect to home
-        } else {
-            alert('Invalid OTP. Please try again.');
+            window.location.href = '/home';
+        } catch (error) {
+            console.error("Login error:", error);
+            alert(error.response?.data?.message || 'Invalid OTP. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -95,7 +107,14 @@ const Login = () => {
                                     style={{ width: '100%', padding: '0.875rem', border: '1px solid #d1d5db', borderRadius: '0.5rem', textAlign: 'center', letterSpacing: '1rem', fontSize: '1.5rem', fontWeight: 'bold' }}
                                 />
                             </div>
-                            <button type="submit" className="btn-primary" style={{ width: '100%', padding: '1rem', borderRadius: '0.5rem' }}>Verify & Login</button>
+                            <button
+                                type="submit"
+                                className="btn-primary"
+                                style={{ width: '100%', padding: '1rem', borderRadius: '0.5rem', opacity: loading ? 0.7 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}
+                                disabled={loading}
+                            >
+                                {loading ? 'Verifying...' : 'Verify & Login'}
+                            </button>
                         </form>
                     )}
 

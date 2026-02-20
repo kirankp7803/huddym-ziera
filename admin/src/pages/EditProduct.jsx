@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../apiConfig';
 
 const EditProduct = () => {
     const { id } = useParams();
@@ -21,7 +22,7 @@ const EditProduct = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/products');
+                const response = await axios.get(`${API_BASE_URL}/products`);
                 const product = response.data.find(p => p.id === parseInt(id));
                 if (product) {
                     setFormData(product);
@@ -56,7 +57,7 @@ const EditProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5000/api/products/${id}`, formData);
+            await axios.put(`${API_BASE_URL}/products/${id}`, formData);
             alert('Product updated successfully!');
             navigate('/inventory');
         } catch (error) {

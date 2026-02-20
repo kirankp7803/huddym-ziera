@@ -801,5 +801,14 @@
   ],
   "subscriptions": [
     "kirankp7803@gmail.com"
+  ],
+  "users": [
+    {
+      "id": 1771558637252,
+      "name": "kiran kp",
+      "email": "kirankp7803@gmail.com",
+      "password": "kirankp2001",
+      "mobile": "9495325601"
+    }
   ]
 }
