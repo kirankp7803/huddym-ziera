@@ -75,7 +75,7 @@ const EditProduct = () => {
             </button>
             <div style={{ backgroundColor: 'white', padding: '2.5rem', borderRadius: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.05)', border: '1px solid #f3f4f6' }}>
                 <h2 style={{ fontSize: '1.75rem', marginBottom: '2rem', color: '#111827', fontFamily: 'serif' }}>Edit Product</h2>
-                <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: window.innerWidth < 640 ? '1fr' : '1fr 1fr', gap: '2rem' }}>
+                <form onSubmit={handleSubmit} className="admin-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
                     <div className="form-group" style={{ gridColumn: 'span 2' }}>
                         <label style={{ display: 'block', marginBottom: '0.75rem', fontWeight: '600', color: '#4b5563' }}>Product Name</label>
                         <input type="text" name="name" value={formData.name} onChange={handleChange} required style={{ width: '100%', padding: '1rem', borderRadius: '0.75rem', border: '1px solid #e5e7eb', fontSize: '1rem' }} />

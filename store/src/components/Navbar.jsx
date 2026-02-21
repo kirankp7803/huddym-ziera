@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { ShoppingBag, Heart, User } from 'lucide-react';
 
 const Navbar = () => {
-    const [cartCount, setCartCount] = useState(0);
+    const [cartCount, setCartCount] = useState(() => {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        return cart.length;
+    });
 
     const updateCartCount = () => {
         const cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -11,8 +14,6 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        updateCartCount();
-
         const handleCartUpdate = () => {
             updateCartCount();
         };

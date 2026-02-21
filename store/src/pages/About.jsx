@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 
 const About = () => {
     return (
-        <div style={{ padding: '2rem 5%', minHeight: '80vh', backgroundColor: '#fdfbf7' }}>
+        <div className="about-page-container" style={{ padding: '2rem 1.25rem', minHeight: '80vh', backgroundColor: '#fdfbf7' }}>
             <button
                 onClick={() => window.history.back()}
                 style={{
@@ -26,7 +26,7 @@ const About = () => {
                     Redefining elegance with a touch of tradition.
                 </p>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', marginBottom: '6rem' }}>
+                <div className="about-grid-2">
                     <div>
                         <img
                             src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
@@ -47,7 +47,7 @@ const About = () => {
 
                 <div style={{ marginBottom: '6rem' }}>
                     <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', textAlign: 'center', marginBottom: '3rem', color: '#1e3a8a' }}>Why Shop With Us?</h2>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+                    <div className="about-features-grid">
                         <div style={{ padding: '2rem', backgroundColor: 'white', borderRadius: '1rem', border: '1px solid #e5e7eb', textAlign: 'center' }}>
                             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🧵</div>
                             <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Authentic Craftsmanship</h3>
@@ -66,7 +66,7 @@ const About = () => {
                     </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '4rem', alignItems: 'center' }}>
+                <div className="about-grid-reverse">
                     <div>
                         <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', marginBottom: '1rem', color: '#1e3a8a' }}>Embrace Your Style</h2>
                         <p style={{ lineHeight: '1.8', color: '#4b5563', marginBottom: '1.5rem', fontSize: '1.1rem' }}>

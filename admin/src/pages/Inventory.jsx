@@ -38,9 +38,9 @@ const Inventory = () => {
 
     return (
         <div style={{ padding: '2rem 1rem', maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', flexDirection: window.innerWidth < 768 ? 'column' : 'row', gap: '1.5rem', textAlign: window.innerWidth < 768 ? 'center' : 'left' }}>
+            <div className="responsive-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' }}>
                 <div>
-                    <h1 style={{ margin: 0, fontFamily: 'serif', fontSize: window.innerWidth < 768 ? '1.8rem' : '2.5rem' }}>Inventory Management</h1>
+                    <h1 style={{ margin: 0, fontFamily: 'serif' }}>Inventory Management</h1>
                     <p style={{ color: '#6b7280', marginTop: '0.5rem', fontSize: '0.9rem' }}>Manage your product listings, prices, and stock levels.</p>
                 </div>
                 <Link
@@ -57,7 +57,6 @@ const Inventory = () => {
                         gap: '0.5rem',
                         boxShadow: '0 4px 6px -1px rgba(37, 99, 235, 0.4)',
                         transition: 'transform 0.2s',
-                        width: window.innerWidth < 768 ? '100%' : 'auto',
                         justifyContent: 'center'
                     }}
                     onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}

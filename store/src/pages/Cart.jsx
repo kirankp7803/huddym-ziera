@@ -3,13 +3,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 const Cart = () => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
     const navigate = useNavigate();
 
     useEffect(() => {
-        const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-        setCart(savedCart);
-
         const handleCartUpdate = () => {
             setCart(JSON.parse(localStorage.getItem('cart') || '[]'));
         };

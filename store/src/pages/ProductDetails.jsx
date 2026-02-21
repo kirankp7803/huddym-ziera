@@ -10,6 +10,7 @@ const ProductDetails = () => {
     const [loading, setLoading] = useState(true);
     const [complimentaryProducts, setComplimentaryProducts] = useState([]);
     const [isWishlisted, setIsWishlisted] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -56,6 +57,7 @@ const ProductDetails = () => {
                 }
             } catch (error) {
                 console.error("Error fetching product:", error);
+                setError("Could not load product details.");
             } finally {
                 setLoading(false);
             }
@@ -96,7 +98,8 @@ const ProductDetails = () => {
     };
 
     if (loading) return <div className="loading">Loading...</div>;
-    if (!product) return <div>Product not found</div>;
+    if (error) return <div style={{ textAlign: 'center', padding: '2rem', color: '#ef4444' }}>{error}</div>;
+    if (!product) return <div style={{ textAlign: 'center', padding: '2rem' }}>Product not found</div>;
 
     return (
         <div style={{ marginTop: '2rem' }}>
@@ -184,39 +187,40 @@ const ProductDetails = () => {
                     </div>
                 </div>
 
-                {/* Reviews Section */}
-                <div className="reviews-container">
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
-                        <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: 0 }}>Customer Reviews</h2>
-                        <button
-                            onClick={() => navigate('/write-review', { state: { productName: product.name } })}
-                            className="btn-primary"
-                        >
-                            Write a Review
-                        </button>
+            </div>
+
+            {/* Reviews Section */}
+            <div className="reviews-container">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+                    <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: 0 }}>Customer Reviews</h2>
+                    <button
+                        onClick={() => navigate('/write-review', { state: { productName: product.name } })}
+                        className="btn-primary"
+                    >
+                        Write a Review
+                    </button>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    <div style={{ borderBottom: '1px solid #fed7aa', paddingBottom: '1rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                            <span style={{ fontWeight: 'bold' }}>Priya Sharma</span>
+                            <span style={{ color: '#f59e0b' }}>★★★★★</span>
+                        </div>
+                        <p style={{ color: '#52525b' }}>Absolutely beautiful! The quality is amazing and it fits perfectly.</p>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                        <div style={{ borderBottom: '1px solid #fed7aa', paddingBottom: '1rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                <span style={{ fontWeight: 'bold' }}>Priya Sharma</span>
-                                <span style={{ color: '#f59e0b' }}>★★★★★</span>
-                            </div>
-                            <p style={{ color: '#52525b' }}>Absolutely beautiful! The quality is amazing and it fits perfectly.</p>
+                    <div style={{ borderBottom: '1px solid #fed7aa', paddingBottom: '1rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                            <span style={{ fontWeight: 'bold' }}>Anjali Gupta</span>
+                            <span style={{ color: '#f59e0b' }}>★★★★☆</span>
                         </div>
-                        <div style={{ borderBottom: '1px solid #fed7aa', paddingBottom: '1rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                <span style={{ fontWeight: 'bold' }}>Anjali Gupta</span>
-                                <span style={{ color: '#f59e0b' }}>★★★★☆</span>
-                            </div>
-                            <p style={{ color: '#52525b' }}>Great fabric and design. Deliver was also very fast. Highly recommend.</p>
+                        <p style={{ color: '#52525b' }}>Great fabric and design. Deliver was also very fast. Highly recommend.</p>
+                    </div>
+                    <div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                            <span style={{ fontWeight: 'bold' }}>Sneha Patel</span>
+                            <span style={{ color: '#f59e0b' }}>★★★★★</span>
                         </div>
-                        <div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                <span style={{ fontWeight: 'bold' }}>Sneha Patel</span>
-                                <span style={{ color: '#f59e0b' }}>★★★★★</span>
-                            </div>
-                            <p style={{ color: '#52525b' }}>Stunning piece. Wore it to a wedding and got so many compliments!</p>
-                        </div>
+                        <p style={{ color: '#52525b' }}>Stunning piece. Wore it to a wedding and got so many compliments!</p>
                     </div>
                 </div>
             </div>

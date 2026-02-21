@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import API_BASE_URL from '../apiConfig';
 
 const Checkout = () => {
-    const [cart, setCart] = useState([]);
+    const [cart] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
     const [checkoutStep, setCheckoutStep] = useState(1); // 1: Shipping, 2: Payment
     const [formData, setFormData] = useState({
         email: '',
@@ -23,12 +24,10 @@ const Checkout = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-        if (savedCart.length === 0) {
+        if (cart.length === 0) {
             navigate('/cart');
         }
-        setCart(savedCart);
-    }, [navigate]);
+    }, [cart, navigate]);
 
     const handleChange = (e) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;

@@ -53,7 +53,7 @@ const Signup = () => {
         <div style={{ display: 'flex', minHeight: '80vh', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
             <div style={{ display: 'flex', width: '100%', maxWidth: '900px', backgroundColor: 'white', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}>
                 {/* Image Section */}
-                <div style={{ flex: 1, display: window.innerWidth < 768 ? 'none' : 'block', position: 'relative' }}>
+                <div className="hide-on-mobile" style={{ flex: 1, position: 'relative' }}>
                     <img
                         src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
                         alt="Fashion"

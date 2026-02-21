@@ -24,11 +24,13 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return !!(user && user.loggedIn);
+  });
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    setIsLoggedIn(!!(user && user.loggedIn));
+    // Session state is now initialized lazily
   }, []);
 
   return (

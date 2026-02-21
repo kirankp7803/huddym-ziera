@@ -1,14 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 const Wishlist = () => {
-    const [wishlist, setWishlist] = useState([]);
-
-    useEffect(() => {
-        const savedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-        setWishlist(savedWishlist);
-    }, []);
+    const [wishlist, setWishlist] = useState(() => JSON.parse(localStorage.getItem('wishlist') || '[]'));
 
     const removeFromWishlist = (id) => {
         const updatedWishlist = wishlist.filter(item => item.id !== id);

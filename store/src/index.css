@@ -200,8 +200,8 @@ ul {
   .shop-sidebar {
     width: 100% !important;
     position: static !important;
-    margin-bottom: 1rem;
-    padding: 0 1rem !important;
+    margin-bottom: 2rem;
+    padding: 0 !important;
   }
 
   .category-list {
@@ -209,7 +209,7 @@ ul {
     flex-direction: row !important;
     overflow-x: auto !important;
     padding: 0.5rem 0 !important;
-    gap: 0.75rem !important;
+    gap: 1rem !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     border-bottom: 1px solid #eee;
@@ -224,10 +224,10 @@ ul {
   }
 
   .category-list button {
-    padding: 0.5rem 1rem !important;
+    padding: 0.6rem 1.25rem !important;
     font-size: 0.9rem !important;
-    background-color: #f8fafc !important;
-    border: 1px solid #e2e8f0 !important;
+    background-color: white !important;
+    border: 1px solid #fed7aa !important;
     border-radius: 2rem !important;
     white-space: nowrap;
   }
@@ -661,41 +661,84 @@ ul {
     padding: 1rem;
   }
 
-  .product-details-container {
+  .product-details-layout {
     flex-direction: column !important;
+  }
+
+  .shop-layout {
+    flex-direction: column !important;
+  }
+
+  .shop-sidebar {
+    position: relative !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-height: none !important;
+    margin-bottom: 2rem;
+  }
+
+  .category-list {
+    flex-direction: row !important;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    gap: 0.75rem !important;
+  }
+
+  .category-btn {
+    white-space: nowrap;
+    width: auto !important;
   }
 
   .product-img {
-    height: 300px;
+    height: 350px !important;
   }
 
   /* Shop Card Responsiveness */
+  .product-list {
+    gap: 1.5rem !important;
+  }
+
   .product-card-horizontal {
     flex-direction: column !important;
     height: auto !important;
+    width: 100% !important;
+    overflow: hidden;
   }
 
   .product-card-horizontal-img {
     width: 100% !important;
-    height: 200px !important;
+    height: 250px !important;
   }
 
   .product-card-horizontal-content {
     padding: 1.5rem !important;
   }
 
+  .product-card-horizontal-content h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .product-card-horizontal-content p {
+    font-size: 0.95rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
   .product-card-footer {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: stretch !important;
+    gap: 1.5rem;
   }
 
   .product-card-actions {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
     width: 100%;
   }
 
   .product-card-actions>* {
-    flex: 1;
+    width: 100%;
+    margin: 0 !important;
   }
 }
 
@@ -724,8 +767,15 @@ ul {
   align-items: flex-start;
 }
 
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .product-list-container {
   flex: 1;
+  min-width: 0;
 }
 
 .shop-sidebar {
@@ -827,11 +877,20 @@ ul {
 
 .shop-section-title {
   text-align: left !important;
+  font-size: 2rem;
+  margin-top: 1rem;
 }
 
 .shop-section-title::after {
   left: 0 !important;
   transform: none !important;
+}
+
+@media (max-width: 768px) {
+  .shop-section-title {
+    font-size: 1.5rem;
+    padding-left: 0;
+  }
 }
 
 /* Shop Classes for Desktop/General */
@@ -1366,4 +1425,79 @@ ul {
   .input-group {
     flex-direction: column;
   }
+
+  /* Add Product Page Responsiveness */
+  .admin-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* About Page Styles */
+.about-grid-2,
+.about-grid-reverse {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.about-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+
+  .about-grid-2,
+  .about-grid-reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .about-grid-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .about-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page-container h1 {
+    font-size: 2rem !important;
+  }
+
+  .about-page-container h2 {
+    font-size: 1.5rem !important;
+    text-align: left !important;
+  }
+}
+
+/* Global Fixes */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hide-on-mobile {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-family: var(--font-serif);
 }

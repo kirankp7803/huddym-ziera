@@ -7,6 +7,7 @@ import API_BASE_URL from '../apiConfig';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const location = useLocation();
 
     useEffect(() => {
@@ -16,6 +17,7 @@ const Shop = () => {
                 setProducts(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);
+                setError("Could not load products. Please check if the server is running.");
             } finally {
                 setLoading(false);
             }
@@ -70,6 +72,7 @@ const Shop = () => {
     const isInWishlist = (id) => wishlist.some(item => item.id === id);
 
     if (loading) return <div className="loading">Loading beautiful items...</div>;
+    if (error) return <div className="error-message" style={{ textAlign: 'center', padding: '2rem', color: '#ef4444' }}>{error}</div>;
 
     const filteredProducts = selectedCategory === 'All'
         ? products
@@ -111,7 +114,7 @@ const Shop = () => {
                         <div className="sale-emoji">🎉</div>
                     </div>
                     <h2 className="section-title shop-section-title">{selectedCategory === 'All' ? 'All Products' : selectedCategory}</h2>
-                    <div className="product-list" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                    <div className="product-list">
                         {filteredProducts.map((product) => (
                             <div key={product.id} className="product-card-horizontal">
                                 <div className="product-card-horizontal-img">

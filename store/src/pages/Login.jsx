@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import API_BASE_URL from '../apiConfig';
 import axios from 'axios';
 
@@ -8,7 +8,6 @@ const Login = () => {
     const [otp, setOtp] = useState('');
     const [showOtpInput, setShowOtpInput] = useState(false);
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
 
     const handleSendOtp = (e) => {
         e.preventDefault();
@@ -44,7 +43,7 @@ const Login = () => {
         <div style={{ display: 'flex', minHeight: '80vh', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
             <div style={{ display: 'flex', width: '100%', maxWidth: '900px', backgroundColor: 'white', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}>
                 {/* Image Section */}
-                <div style={{ flex: 1, display: window.innerWidth < 768 ? 'none' : 'block', position: 'relative' }}>
+                <div className="hide-on-mobile" style={{ flex: 1, position: 'relative' }}>
                     <img
                         src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80"
                         alt="Fashion"
