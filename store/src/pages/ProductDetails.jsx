@@ -102,7 +102,7 @@ const ProductDetails = () => {
     if (!product) return <div style={{ textAlign: 'center', padding: '2rem' }}>Product not found</div>;
 
     return (
-        <div style={{ marginTop: '2rem' }}>
+        <div className="product-details-container">
             <button
                 onClick={() => window.history.back()}
                 className="back-btn"
@@ -110,62 +110,24 @@ const ProductDetails = () => {
                 <ArrowLeft size={20} /> Back
             </button>
             <div className="product-details-layout">
-                <div style={{ flex: 1 }}>
+                <div className="product-image-section">
                     <img src={product.image} alt={product.name} className="product-main-img" />
                 </div>
                 <div className="product-detail-info">
-                    <h1 className="product-title">{product.name}</h1>
-                    <p className="product-price-large">₹{product.price}</p>
-                    <p className="product-description">{product.description}</p>
-
-                    {complimentaryProducts.length > 0 && (
-                        <div className="complimentary-section">
-                            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', marginBottom: '1.5rem' }}>Complimentary Products</h2>
-                            <div className="complimentary-grid">
-                                {complimentaryProducts.map(item => (
-                                    <div key={item.id} className="complimentary-card">
-                                        <img src={item.image} alt={item.name} style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '0.5rem', marginBottom: '0.75rem' }} />
-                                        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</h3>
-                                        <p className="product-price" style={{ fontSize: '1rem' }}>₹{item.price}</p>
-                                        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
-                                            <Link to={`/product/${item.id}`} className="btn-primary" style={{ flex: 1, fontSize: '0.9rem', padding: '0.5rem', textAlign: 'center', textDecoration: 'none' }}>
-                                                View
-                                            </Link>
-                                            <button
-                                                onClick={() => addToCart(item)}
-                                                className="btn-primary"
-                                                style={{ flex: 1, fontSize: '0.9rem', padding: '0.5rem', background: 'var(--color-secondary)' }}
-                                            >
-                                                Add to Bag
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
+                    <h1 className="product-title-large">{product.name}</h1>
+                    <p className="product-price-hero">₹{product.price}</p>
+                    <p className="product-desc-text">{product.description}</p>
 
                     <div className="product-actions-group">
-                        <button onClick={() => addToCart(product)} className="btn-primary" style={{ flex: 1, minWidth: '150px' }}>Add to Bag</button>
+                        <button onClick={() => addToCart(product)} className="btn-buy-now">Add to Bag</button>
                         <button
                             onClick={buyNow}
-                            className="btn-primary"
-                            style={{
-                                flex: 1,
-                                minWidth: '150px',
-                                backgroundColor: '#1d4ed8'
-                            }}
+                            className="btn-buy-now"
+                            style={{ backgroundColor: '#1d4ed8' }}
                         >Buy Now</button>
                         <button
                             onClick={toggleWishlist}
-                            className="btn-primary"
-                            style={{
-                                flex: 1,
-                                minWidth: '150px',
-                                background: isWishlisted ? '#fee2e2' : 'white',
-                                color: isWishlisted ? '#b91c1c' : '#374151',
-                                border: '1px solid #ccc'
-                            }}
+                            className={`btn-wishlist-large ${isWishlisted ? 'active' : ''}`}
                         >
                             {isWishlisted ? 'Wishlisted' : 'Wishlist'}
                         </button>
@@ -173,55 +135,72 @@ const ProductDetails = () => {
 
                     <div className="trust-badges-grid">
                         <div className="trust-badge-item">
-                            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🔒</div>
-                            <span style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Secure Payment</span>
+                            <div className="badge-icon">🔒</div>
+                            <span className="badge-text">Secure Payment</span>
                         </div>
                         <div className="trust-badge-item">
-                            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🚚</div>
-                            <span style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Free Shipping</span>
+                            <div className="badge-icon">🚚</div>
+                            <span className="badge-text">Free Shipping</span>
                         </div>
                         <div className="trust-badge-item">
-                            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>↩️</div>
-                            <span style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Easy Returns</span>
+                            <div className="badge-icon">↩️</div>
+                            <span className="badge-text">Easy Returns</span>
                         </div>
                     </div>
-                </div>
 
+                    {complimentaryProducts.length > 0 && (
+                        <div className="complimentary-section">
+                            <h2 className="section-subtitle">Complete the Look</h2>
+                            <div className="complimentary-grid">
+                                {complimentaryProducts.map(item => (
+                                    <div key={item.id} className="complimentary-card">
+                                        <img src={item.image} alt={item.name} className="comp-img" />
+                                        <h3 className="comp-name">{item.name}</h3>
+                                        <p className="comp-price">₹{item.price}</p>
+                                        <div className="comp-actions">
+                                            <Link to={`/product/${item.id}`} className="btn-view-comp">
+                                                View
+                                            </Link>
+                                            <button
+                                                onClick={() => addToCart(item, true)}
+                                                className="btn-add-comp"
+                                            >
+                                                Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
 
             {/* Reviews Section */}
-            <div className="reviews-container">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
-                    <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: 0 }}>Customer Reviews</h2>
+            <div className="reviews-section">
+                <div className="reviews-header">
+                    <h2 className="section-subtitle">Customer Reviews</h2>
                     <button
                         onClick={() => navigate('/write-review', { state: { productName: product.name } })}
-                        className="btn-primary"
+                        className="btn-write-review"
                     >
                         Write a Review
                     </button>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                    <div style={{ borderBottom: '1px solid #fed7aa', paddingBottom: '1rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                            <span style={{ fontWeight: 'bold' }}>Priya Sharma</span>
-                            <span style={{ color: '#f59e0b' }}>★★★★★</span>
+                <div className="reviews-list">
+                    {[
+                        { name: "Priya Sharma", rating: "★★★★★", text: "Absolutely beautiful! The quality is amazing and it fits perfectly." },
+                        { name: "Anjali Gupta", rating: "★★★★☆", text: "Great fabric and design. Deliver was also very fast. Highly recommend." },
+                        { name: "Sneha Patel", rating: "★★★★★", text: "Stunning piece. Wore it to a wedding and got so many compliments!" }
+                    ].map((review, idx) => (
+                        <div key={idx} className="review-item">
+                            <div className="review-meta">
+                                <span className="review-author">{review.name}</span>
+                                <span className="review-rating">{review.rating}</span>
+                            </div>
+                            <p className="review-text">{review.text}</p>
                         </div>
-                        <p style={{ color: '#52525b' }}>Absolutely beautiful! The quality is amazing and it fits perfectly.</p>
-                    </div>
-                    <div style={{ borderBottom: '1px solid #fed7aa', paddingBottom: '1rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                            <span style={{ fontWeight: 'bold' }}>Anjali Gupta</span>
-                            <span style={{ color: '#f59e0b' }}>★★★★☆</span>
-                        </div>
-                        <p style={{ color: '#52525b' }}>Great fabric and design. Deliver was also very fast. Highly recommend.</p>
-                    </div>
-                    <div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                            <span style={{ fontWeight: 'bold' }}>Sneha Patel</span>
-                            <span style={{ color: '#f59e0b' }}>★★★★★</span>
-                        </div>
-                        <p style={{ color: '#52525b' }}>Stunning piece. Wore it to a wedding and got so many compliments!</p>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>

@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import About from './pages/About';
 import WriteReview from './pages/WriteReview';
+import Profile from './pages/Profile';
+import Addresses from './pages/Addresses';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import './index.css';
 
@@ -54,6 +56,8 @@ function App() {
             <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
             <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
             <Route path="/write-review" element={<ProtectedRoute><WriteReview /></ProtectedRoute>} />
+            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            <Route path="/addresses" element={<ProtectedRoute><Addresses /></ProtectedRoute>} />
 
             {/* Redirect unknown routes */}
             <Route path="*" element={<Navigate to="/" />} />

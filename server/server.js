@@ -99,6 +99,16 @@ app.post('/api/orders', (req, res) => {
     res.status(201).json(newOrder);
 });
 
+// Get orders for a specific user (Store)
+app.get('/api/orders/user/:id', (req, res) => {
+    const data = readData();
+    const userId = req.params.id; // This can be email or phone
+    const userOrders = (data.orders || []).filter(order =>
+        order.customer?.email === userId || order.customer?.phone === userId
+    );
+    res.json(userOrders);
+});
+
 const Razorpay = require('razorpay');
 const crypto = require('crypto');
 
@@ -212,6 +222,37 @@ app.post('/api/login-otp', (req, res) => {
         });
     } else {
         res.status(401).json({ message: "Invalid OTP" });
+    }
+});
+
+// Get User Profile (including addresses)
+app.get('/api/user/profile/:id', (req, res) => {
+    const data = readData();
+    const identifier = req.params.id;
+    const user = data.users?.find(u => u.email === identifier || u.mobile === identifier);
+
+    if (user) {
+        // Don't send password
+        const { password, ...userProfile } = user;
+        res.json(userProfile);
+    } else {
+        res.status(404).json({ message: "User not found" });
+    }
+});
+
+// Update User Addresses
+app.put('/api/user/addresses', (req, res) => {
+    const data = readData();
+    const { identifier, addresses } = req.body;
+    const userIndex = data.users?.findIndex(u => u.email === identifier || u.mobile === identifier);
+
+    if (userIndex !== -1) {
+        data.users[userIndex].addresses = addresses;
+        writeData(data);
+        const { password, ...updatedUser } = data.users[userIndex];
+        res.json({ message: "Addresses updated successfully", user: updatedUser });
+    } else {
+        res.status(404).json({ message: "User not found" });
     }
 });
 

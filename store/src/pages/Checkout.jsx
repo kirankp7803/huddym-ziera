@@ -7,6 +7,8 @@ import API_BASE_URL from '../apiConfig';
 const Checkout = () => {
     const [cart] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
     const [checkoutStep, setCheckoutStep] = useState(1); // 1: Shipping, 2: Payment
+    const [addresses, setAddresses] = useState([]);
+    const [user, setUser] = useState(null);
     const [formData, setFormData] = useState({
         email: '',
         newsletter: true,
@@ -26,8 +28,44 @@ const Checkout = () => {
     useEffect(() => {
         if (cart.length === 0) {
             navigate('/cart');
+            return;
+        }
+
+        const userData = JSON.parse(localStorage.getItem('user'));
+        if (userData && userData.loggedIn) {
+            setUser(userData);
+            setFormData(prev => ({
+                ...prev,
+                email: userData.email || '',
+                phone: userData.mobile || userData.phone || ''
+            }));
+
+            const fetchProfile = async () => {
+                try {
+                    const identifier = userData.email || userData.mobile;
+                    const response = await axios.get(`${API_BASE_URL}/user/profile/${identifier}`);
+                    setAddresses(response.data.addresses || []);
+                } catch (error) {
+                    console.error("Error fetching addresses:", error);
+                }
+            };
+            fetchProfile();
         }
     }, [cart, navigate]);
+
+    const selectAddress = (addr) => {
+        const names = addr.fullName.split(' ');
+        setFormData({
+            ...formData,
+            firstName: names[0] || '',
+            lastName: names.slice(1).join(' ') || '',
+            address: addr.address,
+            city: addr.city,
+            state: addr.state,
+            pincode: addr.pincode,
+            phone: addr.mobile
+        });
+    };
 
     const handleChange = (e) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -89,13 +127,39 @@ const Checkout = () => {
                                 <ArrowLeft size={20} /> Back
                             </button>
                             <h1 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '2rem' }}>Shipping Information</h1>
+
+                            {addresses.length > 0 && (
+                                <div style={{ marginBottom: '2.5rem' }}>
+                                    <h2 className="form-section-title">Use a Saved Address</h2>
+                                    <div style={{ display: 'flex', gap: '1rem', overflowX: 'auto', paddingBottom: '1rem' }}>
+                                        {addresses.map((addr, index) => (
+                                            <div
+                                                key={index}
+                                                onClick={() => selectAddress(addr)}
+                                                style={{
+                                                    minWidth: '200px',
+                                                    padding: '1rem',
+                                                    border: formData.address === addr.address ? '2px solid #4f46e5' : '1px solid #e5e7eb',
+                                                    borderRadius: '1rem',
+                                                    cursor: 'pointer',
+                                                    background: formData.address === addr.address ? '#f0f9ff' : 'white'
+                                                }}
+                                            >
+                                                <p style={{ fontWeight: 'bold', fontSize: '0.9rem', marginBottom: '0.25rem' }}>{addr.fullName} ({addr.type})</p>
+                                                <p style={{ fontSize: '0.8rem', color: '#666', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{addr.address}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
                             <form onSubmit={handleSubmit} className="shipping-form">
                                 <section>
                                     <h2 className="form-section-title">Contact Information</h2>
                                     <input type="text" name="email" placeholder="Email or mobile phone number" value={formData.email} onChange={handleChange} required style={{ width: '100%', padding: '0.875rem', border: '1px solid #e5e7eb', borderRadius: '0.5rem', outline: 'none' }} />
                                 </section>
                                 <section>
-                                    <h2 className="form-section-title">Shipping Address</h2>
+                                    <h2 className="form-section-title">{addresses.length > 0 ? 'Or Enter New Address' : 'Shipping Address'}</h2>
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                         <div className="input-group">
                                             <input type="text" name="firstName" placeholder="First name" value={formData.firstName} onChange={handleChange} required style={{ flex: 1, padding: '0.875rem', border: '1px solid #e5e7eb', borderRadius: '0.5rem' }} />

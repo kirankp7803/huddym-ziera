@@ -32,11 +32,7 @@ const Home = () => {
     return (
         <div className="home-container">
             {/* Hero Section */}
-            <section className="hero-section">
-                {/* Indian Wedding/Festive Image */}
-                <img src="https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Indian Bridal Fashion" className="hero-bg" />
-                <div className="hero-overlay"></div>
-
+            <section className="hero-section" style={{ background: 'transparent', boxShadow: 'none' }}>
                 <div className="hero-content">
                     <h1 className="hero-title">
                         Timeless <span className="highlight">Tradition</span>
