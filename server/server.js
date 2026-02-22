@@ -6,7 +6,7 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -160,30 +160,38 @@ app.post('/api/payment/verify', (req, res) => {
 
 // User Authentication - Signup
 app.post('/api/signup', (req, res) => {
-    const data = readData();
-    const { name, email, password, mobile } = req.body;
+    console.log("Signup request received:", req.body);
+    try {
+        const data = readData();
+        const { name, email, password, mobile } = req.body;
 
-    if (!data.users) data.users = [];
+        if (!data.users) data.users = [];
 
-    if (data.users.find(u => u.email === email)) {
-        return res.status(409).json({ message: "Email already registered" });
+        if (data.users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+            console.log("Signup conflict: Email already registered:", email);
+            return res.status(409).json({ message: "Email already registered" });
+        }
+
+        const newUser = {
+            id: Date.now(),
+            name,
+            email,
+            password, // In a real app, hash this!
+            mobile: mobile || ''
+        };
+
+        data.users.push(newUser);
+        writeData(data);
+
+        console.log("Signup success:", email);
+        res.status(201).json({
+            message: "User registered successfully",
+            user: { name: newUser.name, email: newUser.email, mobile: newUser.mobile, loggedIn: true }
+        });
+    } catch (error) {
+        console.error("Signup error:", error);
+        res.status(500).json({ message: "Internal server error during signup" });
     }
-
-    const newUser = {
-        id: Date.now(),
-        name,
-        email,
-        password, // In a real app, hash this!
-        mobile: mobile || ''
-    };
-
-    data.users.push(newUser);
-    writeData(data);
-
-    res.status(201).json({
-        message: "User registered successfully",
-        user: { name: newUser.name, email: newUser.email, mobile: newUser.mobile, loggedIn: true }
-    });
 });
 
 // User Authentication - Login (Password-based)
@@ -191,12 +199,12 @@ app.post('/api/login', (req, res) => {
     const data = readData();
     const { email, password } = req.body;
 
-    const user = data.users?.find(u => u.email === email && u.password === password);
+    const user = data.users?.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
 
     if (user) {
         res.json({
             message: "Login successful",
-            user: { name: user.name, email: user.email, mobile: user.mobile, loggedIn: true }
+            user: { name: user.name, email: user.email.toLowerCase(), mobile: user.mobile, loggedIn: true }
         });
     } else {
         res.status(401).json({ message: "Invalid email or password" });

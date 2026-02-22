@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
@@ -16,36 +16,65 @@ import Addresses from './pages/Addresses';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import './index.css';
 
-// Protected Route Component
-const ProtectedRoute = ({ children }) => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  if (!user || !user.loggedIn) {
-    return <Navigate to="/login" replace />;
+// Check if user is logged in from localStorage
+const isUserLoggedIn = () => {
+  try {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return !!(user && user.loggedIn);
+  } catch {
+    return false;
   }
-  return children;
+};
+
+// Protected Route — redirects to /login if not authenticated
+const ProtectedRoute = ({ children }) => {
+  return isUserLoggedIn() ? children : <Navigate to="/login" replace />;
 };
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return !!(user && user.loggedIn);
-  });
+  const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn);
 
-  useEffect(() => {
-    // Session state is now initialized lazily
-  }, []);
+  // Called by Login / Signup pages after successful auth
+  const handleAuthSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
+  // Called by Navbar logout
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+  };
 
   return (
     <Router>
       <ScrollToTopButton />
       <div className="app-container">
-        {isLoggedIn && <Navbar />}
-        <main className={`container ${isLoggedIn ? 'main-content' : ''}`} style={{ minHeight: !isLoggedIn ? '100vh' : 'auto', display: !isLoggedIn ? 'flex' : 'block', alignItems: !isLoggedIn ? 'center' : 'initial', justifyContent: !isLoggedIn ? 'center' : 'initial' }}>
+        {isLoggedIn && <Navbar onLogout={handleLogout} />}
+
+        <main
+          className={`container ${isLoggedIn ? 'main-content' : ''}`}
+          style={
+            !isLoggedIn
+              ? { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 }
+              : {}
+          }
+        >
           <Routes>
-            {/* Public Routes */}
-            <Route path="/login" element={isLoggedIn ? <Navigate to="/home" /> : <Login />} />
-            <Route path="/signup" element={isLoggedIn ? <Navigate to="/home" /> : <Signup />} />
-            <Route path="/" element={isLoggedIn ? <Navigate to="/home" /> : <Login />} />
+            {/* Public Routes - redirect to /home if already logged in */}
+            <Route
+              path="/login"
+              element={isLoggedIn ? <Navigate to="/home" replace /> : <Login onAuthSuccess={handleAuthSuccess} />}
+            />
+            <Route
+              path="/signup"
+              element={isLoggedIn ? <Navigate to="/home" replace /> : <Signup onAuthSuccess={handleAuthSuccess} />}
+            />
+
+            {/* Default — go to login if not logged in, home if logged in */}
+            <Route
+              path="/"
+              element={<Navigate to={isLoggedIn ? '/home' : '/login'} replace />}
+            />
 
             {/* Protected Routes */}
             <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -59,8 +88,8 @@ function App() {
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             <Route path="/addresses" element={<ProtectedRoute><Addresses /></ProtectedRoute>} />
 
-            {/* Redirect unknown routes */}
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* Catch-all */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
 
@@ -84,7 +113,7 @@ function App() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <a href="/faq" style={{ color: '#a1a1aa', textDecoration: 'none' }}>FAQ</a>
                   <a href="/shipping" style={{ color: '#a1a1aa', textDecoration: 'none' }}>Shipping Policy</a>
-                  <a href="/returns" style={{ color: '#a1a1aa', textDecoration: 'none' }}>Returns & Exchanges</a>
+                  <a href="/returns" style={{ color: '#a1a1aa', textDecoration: 'none' }}>Returns &amp; Exchanges</a>
                 </div>
               </div>
               <div>

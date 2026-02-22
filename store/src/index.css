@@ -2370,3 +2370,382 @@ hr {
     font-size: 2.5rem;
   }
 }
+
+/* ======================================================
+   STORE AUTH PAGE (Login / Signup)
+   ====================================================== */
+
+@keyframes storeBlob {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(40px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-30px, 25px) scale(0.92);
+  }
+}
+
+@keyframes storeFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes storeSpinAnim {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.store-auth-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0824, #1e0533, #0c1a2e);
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.store-auth-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.store-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.3;
+  animation: storeBlob 12s ease-in-out infinite;
+}
+
+.store-blob-1 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #c026d3, #7c3aed);
+  top: -150px;
+  left: -150px;
+  animation-delay: 0s;
+}
+
+.store-blob-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #db2777, #f59e0b);
+  bottom: -100px;
+  right: -80px;
+  animation-delay: -4s;
+}
+
+.store-blob-3 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, #0ea5e9, #6366f1);
+  top: 50%;
+  left: 42%;
+  animation-delay: -8s;
+}
+
+/* Card */
+.store-auth-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  animation: storeFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Left image panel */
+.store-auth-left {
+  flex: 1;
+  position: relative;
+  min-height: 520px;
+}
+
+.store-auth-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.store-auth-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 8, 36, 0.92) 0%, rgba(15, 8, 36, 0.3) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2.5rem;
+}
+
+.store-auth-brand {
+  color: #fff;
+}
+
+.store-auth-brand-icon {
+  font-size: 1.5rem;
+  color: #fbbf24;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.store-auth-brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.store-auth-brand p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+}
+
+/* Right form panel */
+.store-auth-right {
+  flex: 1;
+  background: rgba(15, 8, 36, 0.92);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+}
+
+.store-auth-form-wrap {
+  width: 100%;
+  max-width: 360px;
+}
+
+.store-auth-mobile-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.store-auth-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+.store-auth-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 2rem;
+}
+
+/* Form */
+.store-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.store-auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.store-auth-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.store-auth-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.store-input-icon {
+  position: absolute;
+  left: 0.9rem;
+  width: 17px;
+  height: 17px;
+  color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+.store-auth-input {
+  width: 100%;
+  padding: 0.8rem 2.8rem 0.8rem 2.7rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.store-auth-input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.store-auth-input:focus {
+  border-color: #c026d3;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(192, 38, 211, 0.2);
+}
+
+.store-auth-input:disabled {
+  opacity: 0.6;
+}
+
+.store-toggle-pwd {
+  position: absolute;
+  right: 0.85rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.store-toggle-pwd:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Error */
+.store-auth-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  color: #fca5a5;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+/* Submit button */
+.store-auth-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #c026d3, #7c3aed);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(192, 38, 211, 0.35);
+  transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+  letter-spacing: 0.2px;
+}
+
+.store-auth-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(192, 38, 211, 0.5);
+}
+
+.store-auth-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.store-auth-btn--loading {
+  opacity: 0.8;
+}
+
+.store-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: storeSpinAnim 0.7s linear infinite;
+}
+
+/* Switch link */
+.store-auth-switch {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.store-auth-link {
+  color: #c026d3;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.store-auth-link:hover {
+  color: #e879f9;
+}
+
+/* Mobile brand visible on small screens only */
+.show-on-mobile {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .store-auth-card {
+    flex-direction: column;
+    border-radius: 18px;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .show-on-mobile {
+    display: block !important;
+  }
+
+  .store-auth-right {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+}
+
+/* Error border for mismatched passwords */
+.store-auth-input--error {
+  border-color: rgba(220, 38, 38, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important;
+}
