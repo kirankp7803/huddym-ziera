@@ -97,7 +97,7 @@ function App() {
           <footer className="footer" style={{ marginTop: 'auto', background: '#27272a', color: 'white', padding: '3rem 2rem' }}>
             <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
               <div>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--color-accent)' }}>ChicBoutique</h3>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--color-accent)' }}>Huddym Ziera</h3>
                 <p style={{ color: '#a1a1aa' }}>Elevating your style with traditional elegance and modern grace.</p>
               </div>
               <div>
@@ -126,7 +126,7 @@ function App() {
               </div>
             </div>
             <div style={{ textAlign: 'center', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #3f3f46', color: '#71717a' }}>
-              <p>© {new Date().getFullYear()} ChicBoutique. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Huddym Ziera. All rights reserved.</p>
             </div>
           </footer>
         )}

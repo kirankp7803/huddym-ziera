@@ -21,7 +21,7 @@ const About = () => {
                 <ArrowLeft size={20} /> Back
             </button>
             <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-                <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '3rem', textAlign: 'center', marginBottom: '1rem', color: '#1e3a8a' }}>About ChicBoutique</h1>
+                <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '3rem', textAlign: 'center', marginBottom: '1rem', color: '#1e3a8a' }}>About Huddym Ziera</h1>
                 <p style={{ textAlign: 'center', fontSize: '1.25rem', color: '#6b7280', marginBottom: '4rem' }}>
                     Redefining elegance with a touch of tradition.
                 </p>
@@ -37,7 +37,7 @@ const About = () => {
                     <div>
                         <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', marginBottom: '1rem', color: '#1e3a8a' }}>Our Story</h2>
                         <p style={{ lineHeight: '1.8', color: '#4b5563', marginBottom: '1.5rem', fontSize: '1.1rem' }}>
-                            Founded with a passion for celebrating the rich heritage of Indian textiles, ChicBoutique began as a small curated collection of handpicked sarees. We believed that traditional wear shouldn't just be for special occasions but a part of everyday elegance.
+                            Founded with a passion for celebrating the rich heritage of Indian textiles, Huddym Ziera began as a small curated collection of handpicked sarees. We believed that traditional wear shouldn't just be for special occasions but a part of everyday elegance.
                         </p>
                         <p style={{ lineHeight: '1.8', color: '#4b5563', fontSize: '1.1rem' }}>
                             Over the years, we've grown into a beloved destination for women seeking authentic, high-quality ethnic wear. From the looms of Banaras to the block printers of Jaipur, we bring you stories woven in thread, directly to your doorstep.
@@ -73,7 +73,7 @@ const About = () => {
                             Fashion is more than just clothing; it's an expression of who you are. Whether you're looking for a breezy Kurti for work, a regal Lehenga for a wedding, or comfortable Palazzos for a weekend outing, we have something to suit every mood and moment.
                         </p>
                         <p style={{ lineHeight: '1.8', color: '#4b5563', marginBottom: '2rem', fontSize: '1.1rem' }}>
-                            Join our community of thousands of stylish women who trust ChicBoutique for their fashion needs. Experience the joy of wearing clothes that are made with love and care.
+                            Join our community of thousands of stylish women who trust Huddym Ziera for their fashion needs. Experience the joy of wearing clothes that are made with love and care.
                         </p>
                     </div>
                     <div>

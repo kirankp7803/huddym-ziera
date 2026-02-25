@@ -214,8 +214,8 @@ const Checkout = () => {
                 {/* Left Panel */}
                 <div className="payment-left-panel">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <div style={{ width: '40px', height: '40px', backgroundColor: 'white', borderRadius: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#1e40af', fontWeight: 'bold' }}>CB</div>
-                        <h2 style={{ fontSize: '1.4rem', fontWeight: '700' }}>ChicBoutique</h2>
+                        <div style={{ width: '40px', height: '40px', backgroundColor: 'white', borderRadius: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#1e40af', fontWeight: 'bold' }}>HZ</div>
+                        <h2 style={{ fontSize: '1.4rem', fontWeight: '700' }}>Huddym Ziera</h2>
                     </div>
                     <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', padding: '2rem', borderRadius: '1rem' }}>
                         <p style={{ opacity: 0.8, fontSize: '0.9rem' }}>Paying Amount</p>

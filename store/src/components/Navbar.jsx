@@ -41,7 +41,7 @@ const Navbar = () => {
                 </button>
 
                 <Link to="/home" className="nav-brand">
-                    ChicBoutique
+                    Huddym Ziera
                 </Link>
 
                 <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
