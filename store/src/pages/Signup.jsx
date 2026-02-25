@@ -93,7 +93,7 @@ const Signup = ({ onAuthSuccess }) => {
                     <div className="store-auth-overlay">
                         <div className="store-auth-brand">
                             <span className="store-auth-brand-icon">✦</span>
-                            <h1>Huddym Ziera</h1>
+                            <h1>Huddym Zeira</h1>
                             <p>Join thousands of fashion lovers today.</p>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ const Signup = ({ onAuthSuccess }) => {
                     <div className="store-auth-form-wrap">
                         {/* Mobile brand */}
                         <div className="store-auth-mobile-brand show-on-mobile">
-                            <span>✦</span> Huddym Ziera
+                            <span>✦</span> Huddym Zeira
                         </div>
 
                         <h2 className="store-auth-title">Create account</h2>
