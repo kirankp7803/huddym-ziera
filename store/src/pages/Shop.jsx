@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, Eye, Zap, Heart } from 'lucide-react';
 import API_BASE_URL from '../apiConfig';
 
 const Shop = () => {
@@ -114,7 +114,50 @@ const Shop = () => {
                         <div className="sale-emoji">🎉</div>
                     </div>
                     <h2 className="section-title shop-section-title">{selectedCategory === 'All' ? 'All Products' : selectedCategory}</h2>
-                    <div className="product-list-grid">
+
+                    {/* Mobile product list (single column, horizontal cards) */}
+                    <div className="mobile-product-list">
+                        {filteredProducts.map((product) => (
+                            <div key={product.id} className="mobile-product-card" onClick={() => navigate(`/product/${product.id}`)}>
+                                <div className="mobile-product-img-wrap">
+                                    <img src={product.image} alt={product.name} className="mobile-product-img" />
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); toggleWishlist(product); }}
+                                        className="mobile-wishlist-btn"
+                                        title={isInWishlist(product.id) ? "Remove from Wishlist" : "Add to Wishlist"}
+                                    >
+                                        <Heart size={16} fill={isInWishlist(product.id) ? "currentColor" : "none"} />
+                                    </button>
+                                </div>
+                                <div className="mobile-product-info">
+                                    <span className="mobile-badge">{product.category}</span>
+                                    <h3 className="mobile-product-name">{product.name}</h3>
+                                    <p className="mobile-product-desc">{product.description?.slice(0, 50)}...</p>
+                                    <div className="mobile-product-bottom">
+                                        <span className="mobile-product-price">₹{product.price}</span>
+                                        <div className="mobile-product-actions">
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); addToCart(product); }}
+                                                className="mobile-btn-cart"
+                                                title="Add to Bag"
+                                            >
+                                                <ShoppingBag size={16} />
+                                            </button>
+                                            <button
+                                                onClick={(e) => { e.stopPropagation(); buyNow(product); }}
+                                                className="mobile-btn-buy"
+                                            >
+                                                Buy
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Desktop product grid */}
+                    <div className="product-list-grid desktop-product-grid">
                         {filteredProducts.map((product) => (
                             <div key={product.id} className="product-card">
                                 <div className="product-card-image-wrap" onClick={() => navigate(`/product/${product.id}`)}>
