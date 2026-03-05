@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import API_BASE_URL from '../apiConfig';
+import SareeVideo from '../assets/Saree_Video_Generation.mp4';
+import lehengavideo from '../assets/Lehenga_Video_Generation.mp4';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -68,12 +70,12 @@ const Home = () => {
                         {
                             title: "Saree",
                             img: "https://images.unsplash.com/photo-1621114638515-2f462bb57448?w=800&q=80",
-                            video: "https://v.ftcdn.net/04/91/92/51/240_F_491925102_pAtC7X4fK8XkEq7O4fK8XkEq7O4fK8.mp4"
+                            video: SareeVideo
                         },
                         {
                             title: "Lehenga",
                             img: "https://images.unsplash.com/photo-1599451100913-75b9ca868137?w=800&q=80",
-                            video: "https://v.ftcdn.net/05/11/47/35/240_F_511473523_XlXyUfXvXpXvXpXvXpXvXpXvXp.mp4"
+                            video: lehengavideo
                         },
                         {
                             title: "Kurti",
@@ -137,11 +139,11 @@ const Home = () => {
                 <h2 className="section-title">Latest Arrivals</h2>
                 <div className="grid-3">
                     {[
-                        { name: "Royal Gold Silk Saree", price: 12999, img: "https://images.unsplash.com/photo-1621114638515-2f462bb57448?w=800&q=80" },
-                        { name: "Handcrafted Bridal Lehenga", price: 25499, img: "https://images.unsplash.com/photo-1599451100913-75b9ca868137?w=800&q=80" },
-                        { name: "Floral Embroidered Kurti", price: 4999, img: "https://images.unsplash.com/photo-1583391733958-e026b1346375?w=800&q=80" }
+                        { id: 1, name: "Royal Gold Silk Saree", price: 12999, img: "https://images.unsplash.com/photo-1621114638515-2f462bb57448?w=800&q=80" },
+                        { id: 24, name: "Handcrafted Bridal Lehenga", price: 18500, img: "https://images.unsplash.com/photo-1599451100913-75b9ca868137?w=800&q=80" },
+                        { id: 21, name: "Floral Embroidered Kurti", price: 1299, img: "https://images.unsplash.com/photo-1583391733958-e026b1346375?w=800&q=80" }
                     ].map((item, idx) => (
-                        <div key={idx} className="product-card arrival-card">
+                        <div key={idx} className="product-card arrival-card" onClick={() => navigate(`/product/${item.id}`)} style={{ cursor: 'pointer' }}>
                             <span className="badge-new">New</span>
                             <img src={item.img} alt={item.name} className="product-img" />
                             <div className="product-info">

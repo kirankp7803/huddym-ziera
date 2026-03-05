@@ -196,18 +196,27 @@ app.post('/api/signup', (req, res) => {
 
 // User Authentication - Login (Password-based)
 app.post('/api/login', (req, res) => {
-    const data = readData();
-    const { email, password } = req.body;
+    try {
+        const data = readData();
+        const { email, password } = req.body;
 
-    const user = data.users?.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
+        if (!email || !password) {
+            return res.status(400).json({ message: "Email and password are required" });
+        }
 
-    if (user) {
-        res.json({
-            message: "Login successful",
-            user: { name: user.name, email: user.email.toLowerCase(), mobile: user.mobile, loggedIn: true }
-        });
-    } else {
-        res.status(401).json({ message: "Invalid email or password" });
+        const user = data.users?.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
+
+        if (user) {
+            res.json({
+                message: "Login successful",
+                user: { name: user.name, email: user.email.toLowerCase(), mobile: user.mobile, loggedIn: true }
+            });
+        } else {
+            res.status(401).json({ message: "Invalid email or password" });
+        }
+    } catch (error) {
+        console.error("Login error:", error);
+        res.status(500).json({ message: "Internal server error during login" });
     }
 });
 
@@ -289,4 +298,13 @@ app.post('/api/subscribe', (req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+// Global Error Handling to prevent crashes
+process.on('uncaughtException', (err) => {
+    console.error('There was an uncaught error', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });

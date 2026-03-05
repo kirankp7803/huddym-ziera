@@ -35,6 +35,16 @@ const Shop = () => {
         }
     }, [location.state]);
 
+    // Handle horizontal scrolling of active category on mobile
+    useEffect(() => {
+        const activeBtn = document.getElementById('active-category');
+        if (activeBtn && window.innerWidth <= 768) {
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+        // Also scroll to top of product list when category changes
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [selectedCategory]);
+
     const categories = ['All', 'Saree', 'Churidar', 'T-Shirt', 'Pants', 'Kurti', 'Lehenga', 'Jewelry', 'Footwear', 'Accessories'];
     const [wishlist, setWishlist] = useState([]);
 
@@ -90,10 +100,11 @@ const Shop = () => {
                 {/* Category Sidebar */}
                 <aside className="shop-sidebar">
                     <h3 className="sidebar-title">Categories</h3>
-                    <ul className="category-list">
+                    <ul className="category-list" id="mobile-category-list">
                         {categories.map(category => (
                             <li key={category}>
                                 <button
+                                    id={category === selectedCategory ? 'active-category' : ''}
                                     onClick={() => setSelectedCategory(category)}
                                     className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
                                 >
@@ -115,41 +126,29 @@ const Shop = () => {
                     </div>
                     <h2 className="section-title shop-section-title">{selectedCategory === 'All' ? 'All Products' : selectedCategory}</h2>
 
-                    {/* Mobile product list (single column, horizontal cards) */}
-                    <div className="mobile-product-list">
+                    {/* Mobile product grid - Compact 2-column design */}
+                    <div className="mobile-product-grid">
                         {filteredProducts.map((product) => (
-                            <div key={product.id} className="mobile-product-card" onClick={() => navigate(`/product/${product.id}`)}>
-                                <div className="mobile-product-img-wrap">
-                                    <img src={product.image} alt={product.name} className="mobile-product-img" />
+                            <div key={product.id} className="mobile-grid-card" onClick={() => navigate(`/product/${product.id}`)}>
+                                <div className="mobile-grid-img-wrap">
+                                    <img src={product.image} alt={product.name} className="mobile-grid-img" />
                                     <button
                                         onClick={(e) => { e.stopPropagation(); toggleWishlist(product); }}
-                                        className="mobile-wishlist-btn"
-                                        title={isInWishlist(product.id) ? "Remove from Wishlist" : "Add to Wishlist"}
+                                        className="mobile-grid-wishlist-btn"
                                     >
-                                        <Heart size={16} fill={isInWishlist(product.id) ? "currentColor" : "none"} />
+                                        <Heart size={14} fill={isInWishlist(product.id) ? "currentColor" : "none"} />
                                     </button>
                                 </div>
-                                <div className="mobile-product-info">
-                                    <span className="mobile-badge">{product.category}</span>
-                                    <h3 className="mobile-product-name">{product.name}</h3>
-                                    <p className="mobile-product-desc">{product.description?.slice(0, 50)}...</p>
-                                    <div className="mobile-product-bottom">
-                                        <span className="mobile-product-price">₹{product.price}</span>
-                                        <div className="mobile-product-actions">
-                                            <button
-                                                onClick={(e) => { e.stopPropagation(); addToCart(product); }}
-                                                className="mobile-btn-cart"
-                                                title="Add to Bag"
-                                            >
-                                                <ShoppingBag size={16} />
-                                            </button>
-                                            <button
-                                                onClick={(e) => { e.stopPropagation(); buyNow(product); }}
-                                                className="mobile-btn-buy"
-                                            >
-                                                Buy
-                                            </button>
-                                        </div>
+                                <div className="mobile-grid-info">
+                                    <h3 className="mobile-grid-name">{product.name}</h3>
+                                    <div className="mobile-grid-bottom">
+                                        <span className="mobile-grid-price">₹{product.price}</span>
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); addToCart(product); }}
+                                            className="mobile-grid-add-btn"
+                                        >
+                                            +Bag
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -159,43 +158,41 @@ const Shop = () => {
                     {/* Desktop product grid */}
                     <div className="product-list-grid desktop-product-grid">
                         {filteredProducts.map((product) => (
-                            <div key={product.id} className="product-card">
-                                <div className="product-card-image-wrap" onClick={() => navigate(`/product/${product.id}`)}>
+                            <div key={product.id} className="product-card" onClick={() => navigate(`/product/${product.id}`)}>
+                                <div className="product-card-image-wrap">
                                     <img src={product.image} alt={product.name} className="product-img" />
-                                    <span className="badge-category">{product.category}</span>
+                                    <span className="badge-sale">Sale</span>
                                     <button
                                         onClick={(e) => { e.stopPropagation(); toggleWishlist(product); }}
                                         className="wishlist-btn-overlay"
                                         title={isInWishlist(product.id) ? "Remove from Wishlist" : "Add to Wishlist"}
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill={isInWishlist(product.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill={isInWishlist(product.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+                                    </button>
+                                    <button
+                                        className="quick-view-btn"
+                                        onClick={(e) => { e.stopPropagation(); navigate(`/product/${product.id}`); }}
+                                        title="Quick View"
+                                    >
+                                        <Eye size={15} color="#333" />
                                     </button>
                                 </div>
                                 <div className="product-info">
                                     <h3 className="product-name">{product.name}</h3>
-                                    <p className="product-description-short">{product.description?.slice(0, 60)}...</p>
-                                    <div className="product-card-footer">
-                                        <span className="product-price">₹{product.price}</span>
-                                        <div className="product-card-actions-grid">
-                                            <button
-                                                onClick={() => navigate(`/product/${product.id}`)}
-                                                className="btn-details-shop"
-                                            >
-                                                Details
-                                            </button>
-                                            <button
-                                                onClick={() => addToCart(product)}
-                                                className="btn-add-cart"
-                                            >
-                                                Add to Bag
-                                            </button>
-                                            <button
-                                                onClick={() => buyNow(product)}
-                                                className="btn-buy-now"
-                                            >
-                                                Buy Now
-                                            </button>
-                                        </div>
+                                    <span className="product-price">₹{product.price}</span>
+                                    <div className="product-card-actions-row">
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); addToCart(product); }}
+                                            className="btn-card-cart"
+                                        >
+                                            + Bag
+                                        </button>
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); buyNow(product); }}
+                                            className="btn-card-buy"
+                                        >
+                                            Buy Now
+                                        </button>
                                     </div>
                                 </div>
                             </div>
