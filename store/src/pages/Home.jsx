@@ -137,18 +137,22 @@ const Home = () => {
             {/* Latest Arrivals Preview */}
             <section className="home-section">
                 <h2 className="section-title">Latest Arrivals</h2>
-                <div className="grid-3">
+                <div className="compact-product-grid">
                     {[
                         { id: 1, name: "Royal Gold Silk Saree", price: 12999, img: "https://images.unsplash.com/photo-1621114638515-2f462bb57448?w=800&q=80" },
                         { id: 24, name: "Handcrafted Bridal Lehenga", price: 18500, img: "https://images.unsplash.com/photo-1599451100913-75b9ca868137?w=800&q=80" },
                         { id: 21, name: "Floral Embroidered Kurti", price: 1299, img: "https://images.unsplash.com/photo-1583391733958-e026b1346375?w=800&q=80" }
                     ].map((item, idx) => (
-                        <div key={idx} className="product-card arrival-card" onClick={() => navigate(`/product/${item.id}`)} style={{ cursor: 'pointer' }}>
-                            <span className="badge-new">New</span>
-                            <img src={item.img} alt={item.name} className="product-img" />
-                            <div className="product-info">
-                                <h3 className="product-name">{item.name}</h3>
-                                <p className="product-price">₹{item.price.toLocaleString('en-IN')}</p>
+                        <div key={idx} className="compact-grid-card arrival-card" onClick={() => navigate(`/product/${item.id}`)}>
+                            <div className="compact-grid-img-wrap">
+                                <img src={item.img} alt={item.name} className="compact-grid-img" />
+                                <span className="badge-new" style={{ position: 'absolute', top: 0, left: 0, zIndex: 5, background: 'var(--color-primary)', color: 'var(--color-background)', padding: '0.2rem 0.6rem', fontSize: '0.7rem', fontWeight: 'bold' }}>New</span>
+                            </div>
+                            <div className="compact-grid-info">
+                                <h3 className="compact-grid-name">{item.name}</h3>
+                                <div className="compact-grid-bottom">
+                                    <span className="compact-grid-price">₹{item.price.toLocaleString('en-IN')}</span>
+                                </div>
                             </div>
                         </div>
                     ))}

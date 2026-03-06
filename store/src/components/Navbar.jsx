@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, Heart, User } from 'lucide-react';
+import { ShoppingBag, Heart, User, Sun, Moon } from 'lucide-react';
 
 const Navbar = () => {
     const [cartCount, setCartCount] = useState(() => {
@@ -30,6 +30,21 @@ const Navbar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    // Theme state
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        return localStorage.getItem('theme') !== 'light';
+    });
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [isDarkMode]);
+
     return (
         <nav className="navbar">
             <div className="container navbar-content">
@@ -51,6 +66,13 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-icons">
+                    <button
+                        className="icon-btn"
+                        onClick={() => setIsDarkMode(!isDarkMode)}
+                        title={`Switch to ${isDarkMode ? 'Light' : 'Dark'} Mode`}
+                    >
+                        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
                     <Link to="/wishlist" className="icon-btn">
                         <Heart size={20} />
                     </Link>

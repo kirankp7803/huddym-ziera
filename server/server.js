@@ -114,8 +114,8 @@ const crypto = require('crypto');
 
 // Razorpay Instance (Use Test Credentials)
 const razorpay = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_YourKeyIdHere',
-    key_secret: process.env.RAZORPAY_KEY_SECRET || 'YourKeySecretHere'
+    key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_SNt908JQ0wkKvS',
+    key_secret: process.env.RAZORPAY_KEY_SECRET || 'qofgjBF4FlTar8VS8TJ3nMUj'
 });
 
 // ... existing code ...
@@ -143,7 +143,7 @@ app.post('/api/payment/verify', (req, res) => {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
         const sign = razorpay_order_id + "|" + razorpay_payment_id;
         const expectedSign = crypto
-            .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET || 'YourKeySecretHere')
+            .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET || 'qofgjBF4FlTar8VS8TJ3nMUj')
             .update(sign.toString())
             .digest("hex");
 

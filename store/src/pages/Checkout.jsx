@@ -20,7 +20,7 @@ const Checkout = () => {
         state: 'Kerala',
         pincode: '',
         phone: '',
-        paymentMethod: 'razorpay_link', // Default to the Quick Pay Link
+        paymentMethod: 'razorpay', // Default to Automated Razorpay
         billingAddress: 'same'
     });
     const navigate = useNavigate();
@@ -81,7 +81,7 @@ const Checkout = () => {
         }
 
         if (formData.paymentMethod === 'razorpay') {
-            // Automated payment removed
+            handleRazorpayPayment();
         } else {
             // Quick Pay Link, UPI, Bank, or COD
             placeOrder(formData);
@@ -109,6 +109,82 @@ const Checkout = () => {
         } catch (error) {
             console.error("Error placing order:", error);
             alert('Failed to place order. Please try again.');
+        }
+    };
+
+    const loadRazorpayScript = () => {
+        return new Promise((resolve) => {
+            if (window.Razorpay) {
+                resolve(true);
+                return;
+            }
+            const script = document.createElement("script");
+            script.src = "https://checkout.razorpay.com/v1/checkout.js";
+            script.onload = () => resolve(true);
+            script.onerror = () => resolve(false);
+            document.body.appendChild(script);
+        });
+    };
+
+    const handleRazorpayPayment = async () => {
+        const res = await loadRazorpayScript();
+        if (!res) {
+            alert('Razorpay SDK failed to load. Are you online?');
+            return;
+        }
+
+        try {
+            const totalAmount = cart.reduce((sum, item) => sum + Number(item.price), 0);
+            const { data: orderData } = await axios.post(`${API_BASE_URL}/payment/create-order`, {
+                amount: totalAmount,
+                currency: "INR"
+            });
+
+            if (!orderData) {
+                alert('Server error. Please check if you are online.');
+                return;
+            }
+
+            const options = {
+                key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_SNt908JQ0wkKvS",
+                amount: orderData.amount,
+                currency: orderData.currency,
+                name: "Huddym Zeira",
+                description: "Purchase Transaction",
+                order_id: orderData.id,
+                handler: async function (response) {
+                    try {
+                        const verifyRes = await axios.post(`${API_BASE_URL}/payment/verify`, {
+                            razorpay_order_id: response.razorpay_order_id,
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_signature: response.razorpay_signature,
+                        });
+
+                        if (verifyRes.data.success) {
+                            placeOrder({ ...formData, paymentStatus: 'Paid (Razorpay)' });
+                        } else {
+                            alert("Payment verification failed");
+                        }
+                    } catch (err) {
+                        alert("Error verifying payment");
+                        console.error(err);
+                    }
+                },
+                prefill: {
+                    name: `${formData.firstName} ${formData.lastName}`.trim(),
+                    email: formData.email,
+                    contact: formData.phone
+                },
+                theme: {
+                    color: "#4f46e5"
+                }
+            };
+
+            const paymentObject = new window.Razorpay(options);
+            paymentObject.open();
+        } catch (error) {
+            console.error("Payment error:", error);
+            alert('Could not open payment gateway.');
         }
     };
 
@@ -238,6 +314,10 @@ const Checkout = () => {
                         <div className="payment-methods-sidebar">
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
 
+                                <div onClick={() => setFormData({ ...formData, paymentMethod: 'razorpay' })} style={{ padding: '1rem', borderRadius: '0.75rem', backgroundColor: formData.paymentMethod === 'razorpay' ? 'white' : 'transparent', boxShadow: formData.paymentMethod === 'razorpay' ? '0 4px 6px rgba(0,0,0,0.1)' : 'none', cursor: 'pointer' }}>
+                                    <p style={{ fontWeight: '600' }}>Pay Online 💳</p>
+                                    <small>Cards, UPI, Netbanking</small>
+                                </div>
                                 <div onClick={() => setFormData({ ...formData, paymentMethod: 'razorpay_link' })} style={{ padding: '1rem', borderRadius: '0.75rem', backgroundColor: formData.paymentMethod === 'razorpay_link' ? 'white' : 'transparent', boxShadow: formData.paymentMethod === 'razorpay_link' ? '0 4px 6px rgba(0,0,0,0.1)' : 'none', cursor: 'pointer' }}>
                                     <p style={{ fontWeight: '600' }}>Quick Pay ⚡</p>
                                     <small>Direct Razorpay Link</small>
@@ -251,6 +331,16 @@ const Checkout = () => {
 
                         <div className="payment-details-view">
 
+                            {formData.paymentMethod === 'razorpay' && (
+                                <div style={{ width: '100%' }}>
+                                    <h4 style={{ marginBottom: '1.5rem' }}>Automated Online Payment</h4>
+                                    <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '1.5rem' }}>Securely pay ₹{totalAmount.toLocaleString('en-IN')} using Credit/Debit card, UPI, or NetBanking.</p>
+                                    <div style={{ padding: '0.75rem', backgroundColor: '#ecfdf5', borderRadius: '0.5rem', marginBottom: '1.5rem' }}>
+                                        <p style={{ fontSize: '0.85rem', color: '#047857' }}><strong>💡 Test Mode Tip:</strong> Since you are in test mode, entering your real UPI ID may show as "invalid". Please enter <strong>success@razorpay</strong> as your UPI ID to simulate a successful payment.</p>
+                                    </div>
+                                    <button onClick={handleRazorpayPayment} className="btn-primary" style={{ width: '100%' }}>Pay Now</button>
+                                </div>
+                            )}
                             {formData.paymentMethod === 'razorpay_link' && (
                                 <div style={{ width: '100%' }}>
                                     <h4 style={{ marginBottom: '1.5rem' }}>Quick Pay via Link</h4>
